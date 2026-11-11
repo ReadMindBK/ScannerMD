@@ -1,0 +1,19 @@
+{
+  "name": "READMIND Escáner",
+  "short_name": "READMIND",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#14253f",
+  "description": "Escaneá ilustraciones de tus libros READMIND y descubrí contenido interactivo.",
+  "icons": [
+    {
+      "src": "./assets/icon.ico",
+      "sizes": "256x256",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}
