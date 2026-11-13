@@ -299,15 +299,6 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 27,
-    name: "1",
-    book: "Colores Mitológicos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/1.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 28,
     name: "2",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -316,11 +307,20 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 29,
+    index: 28,
     name: "3",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/3.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 29,
+    name: "4",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/4.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
 
