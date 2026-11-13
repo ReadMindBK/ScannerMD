@@ -31,7 +31,6 @@ automáticamente al siguiente si no encuentra un dibujo.
    Agregá un nombre por cada nuevo archivo que publiques. */
 window.READMIND_FILES = [
   "targets.mind"
- ,"targets2.mind"
   // Cuando subas el segundo libro, agregá una coma arriba y esta línea:
   // ,"targets2.mind"
   // Para un tercer archivo:
@@ -41,7 +40,7 @@ window.READMIND_FILES = [
 /* 2. TIEMPO DE BÚSQUEDA POR ARCHIVO
    Segundos que el escáner busca en cada .mind antes de pasar al siguiente.
    Podés probar 6, 8, 10 o 12 segundos. */
-window.READMIND_SCAN_SECONDS = 3;
+window.READMIND_SCAN_SECONDS = 8;
 
 /* 3. PERSONAJES Y DESTINOS
    Cada personaje debe indicar:
@@ -282,6 +281,15 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 25,
+    name: "31",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/31.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 26,
     name: "1",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -290,7 +298,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 26,
+    index: 27,
     name: "2",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -299,7 +307,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 27,
+    index: 28,
     name: "3",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -308,7 +316,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 28,
+    index: 29,
     name: "4",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -317,20 +325,12 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 29,
+    index: 30,
     name: "5",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/5.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets2.mind",
-    index: 0,
-    name: "31",
-    book: "Colores Mitológicos",
-    description: "¡FINAL.",
-    image: "./assets/31.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
+
 ];
