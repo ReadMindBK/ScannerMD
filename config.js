@@ -31,6 +31,7 @@ automáticamente al siguiente si no encuentra un dibujo.
    Agregá un nombre por cada nuevo archivo que publiques. */
 window.READMIND_FILES = [
   "targets.mind"
+ ,"targets2.mind"
   // Cuando subas el segundo libro, agregá una coma arriba y esta línea:
   // ,"targets2.mind"
   // Para un tercer archivo:
@@ -281,15 +282,6 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 25,
-    name: "31",
-    book: "Colores Mitológicos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/31.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 26,
     name: "1",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -298,7 +290,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 27,
+    index: 26,
     name: "2",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -307,7 +299,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 28,
+    index: 27,
     name: "3",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -316,7 +308,7 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 29,
+    index: 28,
     name: "4",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
@@ -325,12 +317,20 @@ window.READMIND_TARGETS = [
   },
   {
     file: "targets.mind",
-    index: 30,
+    index: 29,
     name: "5",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/5.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets2.mind",
+    index: 0,
+    name: "31",
+    book: "Colores Mitológicos",
+    description: "¡FINAL.",
+    image: "./assets/31.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
-
 ];
