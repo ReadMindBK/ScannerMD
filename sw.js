@@ -41,6 +41,7 @@ const APP_FILES = [
   "./assets/28.jpg",
   "./assets/29.jpg",
   "./assets/30.jpg",
+  "./assets/31.jpg",
 ];
 
 self.addEventListener("install", event => {
