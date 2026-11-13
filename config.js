@@ -56,10 +56,10 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 0,
-    name: "6",
+    name: "31",
     book: "Colores Mitológicos",
     description: "¡Encontramos a la Esfinge! Descubrí su historia y sus secretos.",
-    image: "./assets/6.jpg",
+    image: "./assets/31.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
@@ -326,10 +326,10 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 30,
-    name: "31",
+    name: "6",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/31.jpg",
+    image: "./assets/6.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
 ];
