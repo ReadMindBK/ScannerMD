@@ -41,7 +41,7 @@ window.READMIND_FILES = [
 /* 2. TIEMPO DE BÚSQUEDA POR ARCHIVO
    Segundos que el escáner busca en cada .mind antes de pasar al siguiente.
    Podés probar 6, 8, 10 o 12 segundos. */
-window.READMIND_SCAN_SECONDS = 5;
+window.READMIND_SCAN_SECONDS = 3;
 
 /* 3. PERSONAJES Y DESTINOS
    Cada personaje debe indicar:
