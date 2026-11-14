@@ -603,6 +603,24 @@ body > main {
   </main>
   <div class="page-footer" aria-hidden="true"></div>
 
+<!-- ===== SONIDOS DEL ESCÁNER READMIND ===== -->
+
+<audio id="soundBook" preload="auto">
+  <source src="./assets/sonido-libro.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="soundError" preload="auto">
+  <source src="./assets/sonido-error.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="soundScan" preload="auto">
+  <source src="./assets/sonido-escanear.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="soundSuccess" preload="auto">
+  <source src="./assets/sonido-reconocido.mp3" type="audio/mpeg">
+</audio>
+
   <script>
   (() => {
     "use strict";
@@ -623,6 +641,24 @@ body > main {
     const bookOptions = document.querySelector("#bookOptions");
     const books = Array.isArray(window.READMIND_BOOKS) ? window.READMIND_BOOKS : [];
     let selectedBook = null;
+
+/* ===== SISTEMA DE SONIDOS ===== */
+
+const soundBook = document.querySelector("#soundBook");
+const soundError = document.querySelector("#soundError");
+const soundScan = document.querySelector("#soundScan");
+const soundSuccess = document.querySelector("#soundSuccess");
+
+function playSound(sound) {
+  if (!sound) return;
+
+  sound.pause();
+  sound.currentTime = 0;
+
+  sound.play().catch(error => {
+    console.warn("No se pudo reproducir el sonido:", error);
+  });
+}
 
     /* =========================================================
        19. CONFIGURACIÓN LEÍDA DESDE config.js
@@ -655,12 +691,15 @@ body > main {
     /* =========================================================
        22. MENSAJES DE ERROR Y LIMPIEZA
        ========================================================= */
-    function showError(message) {
-      errorBox.textContent = message;
-      errorBox.classList.add("show");
-      status.textContent = "No pudimos continuar con el escaneo.";
-      startBtn.disabled = false;
-    }
+function showError(message) {
+
+  playSound(soundError);
+
+  errorBox.textContent = message;
+  errorBox.classList.add("show");
+  status.textContent = "No pudimos continuar con el escaneo.";
+  startBtn.disabled = false;
+}
 
     function clearGroupTimer() {
       if (groupTimer) {
@@ -757,6 +796,7 @@ body > main {
        la tarjeta con el botón para abrir la URL configurada.
        ========================================================= */
     async function recognizeTarget(item) {
+      playSound(soundSuccess);
       recognized = true;
       scanning = false;
       selectedTarget = item;
@@ -835,6 +875,7 @@ body > main {
        requisito de seguridad de los navegadores móviles.
        ========================================================= */
     startBtn.addEventListener("click", async () => {
+      playSound(soundScan);
       errorBox.classList.remove("show");
       result.classList.remove("show");
       selectedTarget = null;
@@ -877,6 +918,7 @@ body > main {
       button.addEventListener("click", () => {
         if (scanning) return;
         selectedBook = book;
+        playSound(soundBook);
         bookOptions.querySelectorAll(".book-option").forEach(el => {
           el.classList.remove("selected");
           el.setAttribute("aria-pressed", "false");
