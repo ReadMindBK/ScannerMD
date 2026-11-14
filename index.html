@@ -58,80 +58,6 @@
     body { min-height: 100svh; }
 
     /* =========================================================
-       06. ENCABEZADO Y LOGO
-       Modificá altura, color, tamaño y espaciado del nombre READMIND.
-       ========================================================= */
-    .app-header {
-      position: relative;
-      z-index: 5;
-      min-height: 68px;
-      padding: 10px 20px;
-      display: static;
-      align-items: center;
-      justify-content: center;
-      background: var(--navy);
-      color: white;
-      box-shadow: 0 3px 16px #101c2b22;
-    }
-    .brand {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: 3px;
-      text-align: center;
-    }
-    .brand small {
-      display: block;
-      margin-top: 1px;
-      color: #cbd7e6;
-      font-size: 8px;
-      letter-spacing: 2.2px;
-      font-weight: 600;
-    }
-
-    /* =========================================================
-       07. CONTENEDOR PRINCIPAL, TÍTULO Y DESCRIPCIÓN
-       ========================================================= */
-    main {
-      width: min(100%, 620px);
-      margin: 0 auto;
-      padding: 28px 20px 36px;
-    }
-    .eyebrow {
-      text-align: center;
-      color: #987331;
-      font-size: 11px;
-      letter-spacing: 2px;
-      font-weight: 800;
-    }
-    h1 {
-      margin: 2px 0;
-      text-align: center;
-      font-family: Georgia, serif;
-      font-size: clamp(27px, 7vw, 38px);
-      color: var(--navy);
-      font-weight: 700;
-    }
-    .intro {
-      max-width: 430px;
-      margin: 0 auto 24px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    /* =========================================================
-       08. TARJETA QUE CONTIENE EL ESCÁNER
-       ========================================================= */
-    .scan-card {
-      background: var(--card);
-      border: 1px solid #e7e4dc;
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: 0 12px 34px #1d2c4010;
-    }
-
-    /* =========================================================
        09. VENTANA DE CÁMARA
        En modo scanning ocupa toda la pantalla del celular.
        La clase recognized la oculta al encontrar una ilustración.
@@ -190,7 +116,7 @@
     }
     .frame {
       width: 72%;
-      height: 66%;
+      height: 50%;
       border: 2px solid #ffffffcc;
       border-radius: 18px;
       box-shadow: 0 0 0 999px #07111a35;
@@ -330,7 +256,7 @@
       border-radius: 12px;
       background: #fff1ed;
       color: #8b3327;
-      font-size: 13px;
+      font-size: 16px;
       line-height: 1.45;
     }
     .error.show { display: block; }
@@ -421,8 +347,6 @@
     }
     body.is-scanning .camera-back { display:block; }
     .page-footer {
-      height:123px; margin-top:0;
-      background:#914760 url("./assets/footer-brain.jpg") center/cover no-repeat;
     }
     @media(max-width:390px) {
       main { padding:20px 30px 36px; }
@@ -465,13 +389,13 @@
 
       <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
-      <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRO DIBUJO</button>
+      <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
       <div class="error" id="errorBox" role="alert"></div>
 
       <!-- La tarjeta se muestra al reconocer cualquier objetivo
            de cualquiera de los archivos .mind configurados. -->
       <section class="result" id="result" aria-live="polite">
-        <div class="found-tag">✓ DIBUJO RECONOCIDO</div>
+        <div class="found-tag">✓ IMAGEN RECONOCIDA</div>
         <div class="result-row">
           <img class="result-image" id="resultImage" alt="">
           <div>
@@ -655,7 +579,7 @@
 
       result.classList.add("show");
       guide.style.display = "none";
-      hint.textContent = "¡Ilustración reconocida!";
+      hint.textContent = "¡Imagen reconocida!";
       status.textContent = "¡Lo encontramos! Ahora descubrí su contenido.";
       cameraWrap.classList.remove("scanning");
       document.body.classList.remove("is-scanning");
@@ -789,7 +713,7 @@
     });
 
     /* =========================================================
-       28. BOTÓN ESCANEAR OTRO DIBUJO
+       28. BOTÓN ESCANEAR OTRA IMAGEN
        Reinicia el ciclo desde el primer archivo .mind.
        ========================================================= */
     againBtn.addEventListener("click", async () => {
