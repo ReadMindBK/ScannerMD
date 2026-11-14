@@ -164,7 +164,7 @@
       min-height: 22px;
       text-align: center;
       color: #667386;
-      font-size: 13px;
+      font-size: 15px;
       line-height: 1.45;
     }
     .primary {
@@ -280,11 +280,52 @@
 
     /* ===== Diseño de la pantalla principal según la referencia ===== */
     body { background:#fff; }
-    .app-header {
-      height:124px; min-height:124px; padding:0;
-      background:#914760 url("./assets/header-scanner.jpg") center/cover no-repeat;
-      box-shadow:0 5px 18px #28304430;
-    }
+.app-header {
+  width:100%;
+  height:124px;
+  min-height:124px;
+  padding:0;
+
+  background-color:#914760;
+  background-image:url("./assets/header-scanner.jpg");
+  background-position:center center;
+  background-size:563px 124px;
+  background-repeat:no-repeat;
+
+  box-shadow:0 5px 18px #28304430;
+}
+
+.header-content {
+  position:absolute;
+  top:50px;
+  left:0;
+  width:100%;
+  text-align:center;
+  z-index:2;
+}
+
+.brand-title {
+  font-family:Arial, sans-serif;
+  font-size:45px;
+  font-weight:300;
+  letter-spacing:3px;
+  line-height:1;
+  color:#fff;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 7px #fff,
+    0 0 1px #fff;
+}
+
+.brand-subtitle {
+  margin-top:2px;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.3px;
+  color:#fff;
+  text-shadow:0 1px 4px #333;
+}
     .brand { display:none; }
     main { width:min(100%,563px); padding:22px 30px 36px; }
     h1 {
@@ -338,20 +379,39 @@
     }
     .scan-card:has(.camera-wrap:not(.scanning)) #startBtn { }
     .camera-hint { bottom:18px; font-size:18px; }
-    .scan-header {
-      display:none; position:fixed; z-index:10002; top:0; left:0; right:0;
-      height:124px; background:#914760 url("./assets/header-scanner.jpg") center/cover no-repeat;
-      box-shadow:0 4px 18px #0005;
-    }
+.scan-header {
+  background-color:#914760;
+  background-image:url("./assets/header-scanner.jpg");
+  background-position:center center;
+  background-size:563px 124px;
+  background-repeat:no-repeat;
+}
     body.is-scanning .scan-header { display:block; }
     .camera-wrap.scanning .camera-guide { top:124px; }
     .camera-wrap.scanning .camera-hint { bottom:22px; }
-    .camera-back {
-      display:none; position:fixed; z-index:10003; top:136px; left:16px;
-      border:0; border-radius:10px; padding:10px 18px;
-      background:#914760; color:white; font-weight:800; font-size:15px;
-      box-shadow:0 3px 12px #0005; cursor:pointer;
-    }
+.camera-back {
+  display:none;
+  position:fixed;
+  z-index:10003;
+
+  top:auto;
+  bottom:65px;
+  left:50%;
+  transform:translateX(-50%);
+
+  border:0;
+  border-radius:10px;
+  padding:10px 28px;
+
+  background:#914760;
+  color:white;
+  font-weight:800;
+  font-size:15px;
+
+  box-shadow:0 3px 12px #0005;
+  cursor:pointer;
+  white-space:nowrap;
+}
     body.is-scanning .camera-back { display:block; }
     .page-footer {
     }
@@ -366,6 +426,63 @@
   }
   .app-header,.scan-header { height:124px; }
 }
+
+/* ===== CORRECCIÓN DE CENTRADO EN TODAS LAS PANTALLAS ===== */
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Encabezado y pie ocupan todo el ancho */
+.app-header,
+.scan-header,
+.page-footer {
+  width: 100%;
+}
+
+/* Columna principal siempre centrada */
+body > main {
+  display: block;
+  width: min(563px, calc(100% - 32px));
+  max-width: 563px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Elementos interiores */
+.book-picker,
+.scan-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.book-options {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Evita desplazamientos horizontales */
+.scan-card,
+.camera-wrap {
+  max-width: 100%;
+}
+
+
+
   </style>
 </head>
 
@@ -373,7 +490,14 @@
   <!-- =========================================================
        16. ENCABEZADO VISIBLE
        ========================================================= -->
-  <header class="app-header" aria-label="SCANNER — Explora, descubre, aprende"></header>
+<header class="app-header">
+  <div class="header-content">
+    <div class="brand-title">SCANNER</div>
+    <div class="brand-subtitle">
+      EXPLORA - DESCUBRE - APRENDE
+    </div>
+  </div>
+</header>
   <div class="scan-header" aria-hidden="true"></div>
   <button class="camera-back" id="backBtn" type="button">VOLVER</button>
 
@@ -394,7 +518,7 @@
         <div class="camera-guide" id="guide">
           <div class="frame"></div>
         </div>
-        <div class="camera-hint" id="cameraHint">Colocá el dibujo dentro del marco</div>
+        <div class="camera-hint" id="cameraHint">Colocá la imagen dentro del marco</div>
       </div>
 
       <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
