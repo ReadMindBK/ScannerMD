@@ -144,17 +144,19 @@
     /* =========================================================
        11. MENSAJE SUPERPUESTO EN LA CÁMARA
        ========================================================= */
-    .camera-hint {
-      position: absolute;
-      z-index: 4;
-      bottom: 17px;
-      left: 15px;
-      right: 15px;
-      text-align: center;
-      color: white;
-      font-size: 13px;
-      text-shadow: 0 1px 5px #000;
-    }
+.camera-hint {
+  position: absolute;
+  z-index: 4;
+  top: 55px;
+  bottom: auto;
+  left: 15px;
+  right: 15px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  text-shadow: 0 1px 5px #000;
+}
 
     /* =========================================================
        12. ESTADO DEL ESCÁNER Y BOTONES
@@ -258,6 +260,7 @@
       color: #8b3327;
       font-size: 16px;
       line-height: 1.45;
+      text-align: center;
     }
     .error.show { display: block; }
     .foot {
@@ -427,6 +430,37 @@
   .app-header,.scan-header { height:124px; }
 }
 
+
+/* ===== ENCABEZADO DURANTE EL ESCANEO ===== */
+
+.app-header {
+  position: relative;
+}
+
+.scan-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10002;
+
+  width: 100%;
+  height: 124px;
+  min-height: 124px;
+
+  background-color: #914760;
+  background-image: url("./assets/header-scanner.jpg");
+  background-position: center center;
+  background-size: 563px 124px;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 5px 18px #28304430;
+}
+
+body.is-scanning .scan-header {
+  display: block;
+}
+
 /* ===== CORRECCIÓN DE CENTRADO EN TODAS LAS PANTALLAS ===== */
 
 html, body {
@@ -481,8 +515,6 @@ body > main {
   max-width: 100%;
 }
 
-
-
   </style>
 </head>
 
@@ -498,7 +530,14 @@ body > main {
     </div>
   </div>
 </header>
-  <div class="scan-header" aria-hidden="true"></div>
+<div class="scan-header">
+  <div class="header-content">
+    <div class="brand-title">SCANNER</div>
+    <div class="brand-subtitle">
+      EXPLORA - DESCUBRE - APRENDE
+    </div>
+  </div>
+</div>
   <button class="camera-back" id="backBtn" type="button">VOLVER</button>
 
   <!-- =========================================================
