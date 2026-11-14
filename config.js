@@ -31,9 +31,9 @@ automáticamente al siguiente si no encuentra un dibujo.
    Cada botón carga exclusivamente el .mind indicado aquí.
    Cambiá los nombres si tus archivos tienen otros nombres. */
 window.READMIND_BOOKS = [
-  { id: "egipto", name: "Colores Mitológicos", file: "targets.mind", image: "./assets/web/book1.jpg" },
-  { id: "dinosaurios", name: "Colores Prehistóricos", file: "targets2.mind", image: "./assets/web/book2.jpg" },
-  { id: "robots", name: "Colores Robóticos", file: "targets3.mind", image: "./assets/web/book3.jpg" }
+  { id: "egipto", name: "Colores Mitológicos", file: "targets.mind", image: "./assets/web/book1.png" },
+  { id: "dinosaurios", name: "Colores Prehistóricos", file: "targets2.mind", image: "./assets/web/book2.png" },
+  { id: "robots", name: "Colores Robóticos", file: "targets3.mind", image: "./assets/web/book3.png" }
 ];
 
 /* 1. LISTA DE ARCHIVOS .MIND
