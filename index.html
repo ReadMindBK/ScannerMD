@@ -606,6 +606,19 @@ body > main {
 <!-- ===== SONIDOS DEL ESCÁNER READMIND ===== -->
 
 <audio id="soundBook" preload="auto">
+<!-- ===== TRES SONIDOS NUEVOS ===== -->
+
+<audio id="soundBack" preload="auto">
+  <source src="./assets/sonido-volver.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="soundAgain" preload="auto">
+  <source src="./assets/sonido-otra-imagen.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="soundDiscover" preload="auto">
+  <source src="./assets/sonido-descubrir.mp3" type="audio/mpeg">
+</audio>
   <source src="./assets/sonido-libro.mp3" type="audio/mpeg">
 </audio>
 
@@ -648,6 +661,12 @@ const soundBook = document.querySelector("#soundBook");
 const soundError = document.querySelector("#soundError");
 const soundScan = document.querySelector("#soundScan");
 const soundSuccess = document.querySelector("#soundSuccess");
+const soundBack = document.querySelector("#soundBack");
+const soundAgain = document.querySelector("#soundAgain");
+const soundDiscover = document.querySelector("#soundDiscover");
+
+/* Evita reproducir dos sonidos al escanear otra imagen */
+let skipNextScanSound = false;
 
 function playSound(sound) {
   if (!sound) return;
@@ -875,7 +894,11 @@ function showError(message) {
        requisito de seguridad de los navegadores móviles.
        ========================================================= */
     startBtn.addEventListener("click", async () => {
-      playSound(soundScan);
+if (!skipNextScanSound) {
+  playSound(soundScan);
+}
+
+skipNextScanSound = false;
       errorBox.classList.remove("show");
       result.classList.remove("show");
       selectedTarget = null;
@@ -932,6 +955,7 @@ function showError(message) {
     });
 
     backBtn.addEventListener("click", async () => {
+      playSound(soundBack);
       scanning = false;
       recognized = false;
       cycleToken++;
@@ -952,6 +976,7 @@ function showError(message) {
        Reinicia el ciclo desde el primer archivo .mind.
        ========================================================= */
     againBtn.addEventListener("click", async () => {
+      playSound(soundAgain);
       await stopCurrentScene();
       document.body.classList.remove("is-scanning");
       cameraWrap.classList.remove("scanning", "recognized");
@@ -959,7 +984,8 @@ function showError(message) {
       againBtn.hidden = true;
       startBtn.hidden = false;
       startBtn.disabled = false;
-      startBtn.click();
+skipNextScanSound = true;
+startBtn.click();
     });
 
     /* =========================================================
@@ -968,6 +994,7 @@ function showError(message) {
        ========================================================= */
     openBtn.addEventListener("click", () => {
       if (!selectedTarget) return;
+      playSound(soundDiscover);
       const url = selectedTarget.url;
       if (!url || url.startsWith("REEMPLAZAR_")) {
         showError("Todavía falta configurar la dirección web de este personaje. Editá su campo url en config.js.");
