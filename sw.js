@@ -1,10 +1,10 @@
-/* ================================================================
+Proximamente/* ================================================================
    SERVICE WORKER READMIND
    Versión nueva para invalidar la caché anterior.
    config.js y los archivos .mind usan red primero, para que al
    publicar nuevos libros no quede una lista vieja en el celular.
    ================================================================ */
-const CACHE_NAME = "readmind-scanner-books-v4";
+const CACHE_NAME = "readmind-scanner-books-v5";
 const APP_FILES = [
   "./",
   "./index.html",
@@ -12,6 +12,10 @@ const APP_FILES = [
   "./manifest.webmanifest",
   "./assets/icon.ico",
   "./assets/header-scanner.jpg",
+  "./assets/sonido-libro.mp3",
+  "./assets/sonido-error.mp3",
+  "./assets/sonido-escanear.mp3",
+  "./assets/sonido-reconocido.mp3",
   "./assets/web/book1.png",
   "./assets/web/book2.png",
   "./assets/web/book3.png",
