@@ -515,6 +515,26 @@ body > main {
   max-width: 100%;
 }
 
+/* ===== QUITAR RESALTADO CUADRADO EN CELULARES ===== */
+
+.book-option {
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.book-option:focus {
+  outline: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .book-option:focus,
+  .book-option:focus-visible,
+  .book-option:active {
+    outline: none;
+    box-shadow: none;
+  }
+}
   </style>
 </head>
 
@@ -927,6 +947,7 @@ body > main {
       });
     }
   })();
+
   </script>
 </body>
 </html>
