@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- =========================================================
+       01. DATOS GENERALES DEL SITIO
+       Título, idioma, adaptación a celulares e ícono.
+       ========================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14253f">
+  <meta name="description" content="Escáner interactivo de libros READMIND.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.ico" type="image/x-icon">
+  <title>READMIND | Escáner</title>
+
+  <!-- =========================================================
+       02. LIBRERÍAS
+       A-Frame crea la escena de cámara y MindAR reconoce dibujos.
+       No cambiar las versiones sin probar el escáner.
+       ========================================================= -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <!-- =========================================================
+       03. CONFIGURACIÓN EDITABLE
+       Los personajes, sus archivos .mind y sus URL están en config.js.
+       ========================================================= -->
+  <script src="./config.js"></script>
+
+  <style>
+    /* =========================================================
+       04. COLORES PRINCIPALES
+       Cambiá estos valores para modificar la identidad visual.
+       ========================================================= */
+    :root {
+      --navy: #924863;       /* Azul oscuro: encabezado y botones */
+      --blue: #244b70;       /* Azul secundario */
+      --gold: #e5b95f;       /* Dorado: detalles del visor */
+      --paper: #ffffff;      /* Fondo general */
+      --ink: #17243a;        /* Color del texto */
+      --muted: #637084;      /* Texto secundario */
+      --card: #736E93;       /* Fondo de tarjetas */
+      --success: #287b52;    /* Mensajes de reconocimiento */
+    }
+
+    /* =========================================================
+       05. ESTILOS GENERALES Y TIPOGRAFÍA
+       ========================================================= */
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+                   "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    body { min-height: 100svh; }
+
+    /* =========================================================
+       06. ENCABEZADO Y LOGO
+       Modificá altura, color, tamaño y espaciado del nombre READMIND.
+       ========================================================= */
+    .app-header {
+      position: relative;
+      z-index: 5;
+      min-height: 68px;
+      padding: 10px 20px;
+      display: static;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 3px 16px #101c2b22;
+    }
+    .brand {
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+    .brand small {
+      display: block;
+      margin-top: 1px;
+      color: #cbd7e6;
+      font-size: 8px;
+      letter-spacing: 2.2px;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       07. CONTENEDOR PRINCIPAL, TÍTULO Y DESCRIPCIÓN
+       ========================================================= */
+    main {
+      width: min(100%, 620px);
+      margin: 0 auto;
+      padding: 28px 20px 36px;
+    }
+    .eyebrow {
+      text-align: center;
+      color: #987331;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 2px 0;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: clamp(27px, 7vw, 38px);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .intro {
+      max-width: 430px;
+      margin: 0 auto 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    /* =========================================================
+       08. TARJETA QUE CONTIENE EL ESCÁNER
+       ========================================================= */
+    .scan-card {
+      background: var(--card);
+      border: 1px solid #e7e4dc;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 12px 34px #1d2c4010;
+    }
+
+    /* =========================================================
+       09. VENTANA DE CÁMARA
+       En modo scanning ocupa toda la pantalla del celular.
+       La clase recognized la oculta al encontrar una ilustración.
+       ========================================================= */
+    .camera-wrap {
+      position: relative;
+      height: min(58svh, 470px);
+      min-height: 300px;
+      overflow: hidden;
+      border-radius: 17px;
+      background: #101b2c;
+    }
+    .camera-wrap.scanning {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 10000 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 0 !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      background: #000 !important;
+    }
+    .camera-wrap.recognized { display: none !important; }
+    .camera-wrap.scanning a-scene {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .camera-wrap.scanning a-scene canvas,
+    .camera-wrap.scanning video {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+
+    /* =========================================================
+       10. MARCO VISUAL QUE GUÍA AL USUARIO
+       Modificá tamaño, borde y color del rectángulo.
+       ========================================================= */
+    .camera-guide {
+      pointer-events: none;
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .frame {
+      width: 72%;
+      height: 66%;
+      border: 2px solid #ffffffcc;
+      border-radius: 18px;
+      box-shadow: 0 0 0 999px #07111a35;
+      position: relative;
+    }
+    .frame:before, .frame:after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .frame:before {
+      top: -2px; left: -2px;
+      border-width: 4px 0 0 4px;
+      border-radius: 14px 0 0;
+    }
+    .frame:after {
+      bottom: -2px; right: -2px;
+      border-width: 0 4px 4px 0;
+      border-radius: 0 0 14px;
+    }
+
+    /* =========================================================
+       11. MENSAJE SUPERPUESTO EN LA CÁMARA
+       ========================================================= */
+    .camera-hint {
+      position: absolute;
+      z-index: 4;
+      bottom: 17px;
+      left: 15px;
+      right: 15px;
+      text-align: center;
+      color: white;
+      font-size: 13px;
+      text-shadow: 0 1px 5px #000;
+    }
+
+    /* =========================================================
+       12. ESTADO DEL ESCÁNER Y BOTONES
+       ========================================================= */
+    .status {
+      margin: 14px 0 0;
+      min-height: 22px;
+      text-align: center;
+      color: #667386;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .primary {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .5px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px #14253f22;
+    }
+    .primary:disabled { opacity: .55; cursor: wait; }
+    .secondary {
+      background: #edf1f5;
+      color: var(--navy);
+      box-shadow: none;
+      margin-top: 9px;
+    }
+
+    /* =========================================================
+       13. TARJETA DEL PERSONAJE RECONOCIDO
+       ========================================================= */
+    .result {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid #e9e2d3;
+      border-radius: 19px;
+      background: #fffdf8;
+    }
+    .result.show { display: block; animation: rise .35s ease-out; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .found-tag {
+      color: var(--success);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 12px 0 15px;
+    }
+    .result-image {
+      width: 94px;
+      height: 112px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      border: 1px solid #e4e0d7;
+      background: white;
+    }
+    .result h2 {
+      margin: 0 0 5px;
+      font-family: Georgia, serif;
+      color: var(--navy);
+      font-size: 25px;
+    }
+    .book {
+      color: #92703a;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+    .description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       14. MENSAJES DE ERROR Y PIE DE PÁGINA
+       ========================================================= */
+    .error {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #fff1ed;
+      color: #8b3327;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .error.show { display: block; }
+    .foot {
+      margin: 19px 0 0;
+      text-align: center;
+      color: #9aa2ac;
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       15. ADAPTACIÓN A CELULARES PEQUEÑOS
+       ========================================================= */
+    @media (max-width: 390px) {
+      main { padding: 22px 14px 28px; }
+      .scan-card { padding: 12px; }
+      .camera-wrap { min-height: 280px; }
+    }
+    /* Oculta el botón VR de A-Frame: esta app no utiliza realidad virtual. */
+    .a-enter-vr { display: none !important; }
+
+    /* ===== Diseño de la pantalla principal según la referencia ===== */
+    body { background:#fff; }
+    .app-header {
+      height:124px; min-height:124px; padding:0;
+      background:#914760 url("./assets/header-scanner.jpg") center/cover no-repeat;
+      box-shadow:0 5px 18px #28304430;
+    }
+    .brand { display:none; }
+    main { width:min(100%,563px); padding:22px 30px 36px; }
+    h1 {
+      margin:0 0 10px; font-family:Georgia,serif;
+      font-size:clamp(19px,4.8vw,24px); color:#914760;
+      text-transform:uppercase; font-weight:800;
+    }
+    .intro { display:none; }
+    .book-picker { margin:0 auto 27px; text-align:center; }
+    .book-picker-title { margin:0 0 10px; color:#914760; font:800 21px Georgia,serif; text-transform:uppercase; }
+    .book-options { display:flex; justify-content:center; gap:22px; }
+    .book-option {
+      width:116px; height:116px; padding:0; border:3px solid #6f6a8d;
+      border-radius:50%; overflow:hidden; background:#fff; cursor:pointer;
+      transition:transform .16s,border-color .16s,box-shadow .16s;
+    }
+    .book-option img { display:block; width:100%; height:100%; object-fit:cover; }
+    .book-option.selected {
+      border:5px solid #e5b95f; transform:scale(1.06);
+      box-shadow:0 0 0 4px #91476035,0 4px 12px #14253f35;
+    }
+    .book-option:focus-visible { outline:3px solid #14253f; outline-offset:4px; }
+    .scan-card {
+      background:#736e93; border:0; border-radius:22px;
+      padding:18px; box-shadow:none;
+    }
+    .camera-wrap {
+      height: min(58svh,470px); min-height:300px;
+      background:#0d1b2a; border-radius:16px;
+    }
+    .camera-wrap.scanning {
+      position:fixed!important; inset:0!important; z-index:10000!important;
+      width:100vw!important; height:100dvh!important; min-height:0!important;
+      border-radius:0!important; background:#071321!important;
+    }
+    .camera-wrap.scanning a-scene { top:0!important; }
+    .camera-wrap.scanning a-scene canvas,
+    .camera-wrap.scanning video { object-fit:cover!important; }
+    .scan-card .status { color:#fff; }
+    #startBtn {
+      margin-top:20px; background:#914760; color:#fff;
+      border-radius:14px; font-size:17px; letter-spacing:1px;
+      padding:15px 12px; box-shadow:0 4px 8px #14253f25;
+    }
+    .scan-card:has(.camera-wrap:not(.scanning)) #startBtn { }
+    .camera-hint { bottom:18px; font-size:18px; }
+    .scan-header {
+      display:none; position:fixed; z-index:10002; top:0; left:0; right:0;
+      height:124px; background:#914760 url("./assets/header-scanner.jpg") center/cover no-repeat;
+      box-shadow:0 4px 18px #0005;
+    }
+    body.is-scanning .scan-header { display:block; }
+    .camera-wrap.scanning .camera-guide { top:124px; }
+    .camera-wrap.scanning .camera-hint { bottom:22px; }
+    .camera-back {
+      display:none; position:fixed; z-index:10003; top:136px; left:16px;
+      border:0; border-radius:10px; padding:10px 18px;
+      background:#914760; color:white; font-weight:800; font-size:15px;
+      box-shadow:0 3px 12px #0005; cursor:pointer;
+    }
+    body.is-scanning .camera-back { display:block; }
+    .page-footer {
+      height:123px; margin-top:0;
+      background:#914760 url("./assets/footer-brain.jpg") center/cover no-repeat;
+    }
+    @media(max-width:390px) {
+      main { padding:20px 30px 36px; }
+      .book-options { gap:18px; }
+      .book-option { width:108px;height:108px; }
+      .scan-card { padding:18px; }
+      .camera-wrap { min-height:280px; }
+      .app-header,.scan-header { height:124px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================================================
+       16. ENCABEZADO VISIBLE
+       ========================================================= -->
+  <header class="app-header" aria-label="SCANNER — Explora, descubre, aprende"></header>
+  <div class="scan-header" aria-hidden="true"></div>
+  <button class="camera-back" id="backBtn" type="button">VOLVER</button>
+
+  <!-- =========================================================
+       17. CONTENIDO PRINCIPAL
+       Los textos visibles se pueden cambiar directamente aquí.
+       ========================================================= -->
+  <main>
+    <section class="book-picker" aria-label="Selección de libro">
+      <h1 class="book-picker-title">PRIMERO SELECCIONA EL LIBRO</h1>
+      <div class="book-options" id="bookOptions"></div>
+    </section>
+
+    <section class="scan-card">
+      <!-- La escena A-Frame se crea desde JavaScript para poder
+           cargar cada archivo .mind de forma independiente. -->
+      <div class="camera-wrap" id="cameraWrap">
+        <div class="camera-guide" id="guide">
+          <div class="frame"></div>
+        </div>
+        <div class="camera-hint" id="cameraHint">Colocá el dibujo dentro del marco</div>
+      </div>
+
+      <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
+      <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
+      <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRO DIBUJO</button>
+      <div class="error" id="errorBox" role="alert"></div>
+
+      <!-- La tarjeta se muestra al reconocer cualquier objetivo
+           de cualquiera de los archivos .mind configurados. -->
+      <section class="result" id="result" aria-live="polite">
+        <div class="found-tag">✓ DIBUJO RECONOCIDO</div>
+        <div class="result-row">
+          <img class="result-image" id="resultImage" alt="">
+          <div>
+            <h2 id="resultName">Personaje</h2>
+            <div class="book" id="resultBook">Libro</div>
+            <p class="description" id="resultDescription"></p>
+          </div>
+        </div>
+        <button class="primary" id="openBtn">DESCUBRIR CONTENIDO →</button>
+      </section>
+    </section>
+  </main>
+  <div class="page-footer" aria-hidden="true"></div>
+
+  <script>
+  (() => {
+    "use strict";
+
+    /* =========================================================
+       18. REFERENCIAS A LOS ELEMENTOS DE LA PÁGINA
+       ========================================================= */
+    const cameraWrap = document.querySelector("#cameraWrap");
+    const status = document.querySelector("#status");
+    const startBtn = document.querySelector("#startBtn");
+    const againBtn = document.querySelector("#againBtn");
+    const guide = document.querySelector("#guide");
+    const hint = document.querySelector("#cameraHint");
+    const result = document.querySelector("#result");
+    const errorBox = document.querySelector("#errorBox");
+    const openBtn = document.querySelector("#openBtn");
+    const backBtn = document.querySelector("#backBtn");
+    const bookOptions = document.querySelector("#bookOptions");
+    const books = Array.isArray(window.READMIND_BOOKS) ? window.READMIND_BOOKS : [];
+    let selectedBook = null;
+
+    /* =========================================================
+       19. CONFIGURACIÓN LEÍDA DESDE config.js
+       READMIND_FILES contiene los nombres de los archivos .mind.
+       READMIND_TARGETS contiene los personajes y sus datos.
+       ========================================================= */
+    const targets = Array.isArray(window.READMIND_TARGETS)
+      ? window.READMIND_TARGETS
+      : [];
+
+    /* =========================================================
+       20. AJUSTES DEL ESCANEO
+       groupScanSeconds: segundos que busca en cada archivo antes
+       de pasar automáticamente al siguiente.
+       ========================================================= */
+    // Un único archivo .mind por sesión: nunca rota automáticamente.
+
+    /* =========================================================
+       21. VARIABLES DE CONTROL
+       ========================================================= */
+    let currentGroup = 0;
+    let currentScene = null;
+    let currentSystem = null;
+    let selectedTarget = null;
+    let groupTimer = null;
+    let scanning = false;
+    let recognized = false;
+    let cycleToken = 0;
+
+    /* =========================================================
+       22. MENSAJES DE ERROR Y LIMPIEZA
+       ========================================================= */
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.classList.add("show");
+      status.textContent = "No pudimos continuar con el escaneo.";
+      startBtn.disabled = false;
+    }
+
+    function clearGroupTimer() {
+      if (groupTimer) {
+        clearTimeout(groupTimer);
+        groupTimer = null;
+      }
+    }
+
+    async function stopCurrentScene() {
+      clearGroupTimer();
+      const oldScene = currentScene;
+      const oldSystem = currentSystem;
+      currentScene = null;
+      currentSystem = null;
+
+      if (oldSystem) {
+        try { await oldSystem.stop(); } catch (error) {
+          console.warn("No se pudo detener el grupo anterior:", error);
+        }
+      }
+      if (oldScene && oldScene.parentNode) {
+        oldScene.parentNode.removeChild(oldScene);
+      }
+    }
+
+    /* =========================================================
+       23. CREAR UNA ESCENA PARA UN ARCHIVO .MIND
+       Cada archivo tiene su propio conjunto de índices.
+       Por ejemplo, targets.mind puede tener 0 y 1;
+       targets2.mind también puede empezar en 0.
+       ========================================================= */
+    function createSceneForFile(fileName, groupNumber) {
+      return new Promise((resolve, reject) => {
+        const scene = document.createElement("a-scene");
+        scene.setAttribute("mindar-image",
+          `imageTargetSrc: ./${fileName}; autoStart: false; uiLoading: no; uiScanning: no;`);
+        scene.setAttribute("color-space", "sRGB");
+        scene.setAttribute("renderer", "colorManagement: true, physicallyCorrectLights");
+        scene.setAttribute("vr-mode-ui", "enabled: false");
+        scene.setAttribute("device-orientation-permission-ui", "enabled: false");
+        scene.setAttribute("embedded", "");
+
+        const camera = document.createElement("a-camera");
+        camera.setAttribute("position", "0 0 0");
+        camera.setAttribute("look-controls", "enabled: false");
+        scene.appendChild(camera);
+
+        // Crear solamente las entidades que pertenecen a este archivo.
+        const groupTargets = targets.filter(item => item.file === fileName);
+        if (!groupTargets.length) {
+          reject(new Error(`No hay personajes configurados para ${fileName} en config.js.`));
+          return;
+        }
+
+        groupTargets.forEach(item => {
+          const entity = document.createElement("a-entity");
+          entity.setAttribute("mindar-image-target", `targetIndex: ${Number(item.index)}`);
+          entity.addEventListener("targetFound", () => {
+            if (recognized || !scanning || currentScene !== scene) return;
+            recognizeTarget(item);
+          });
+          scene.appendChild(entity);
+        });
+
+        let settled = false;
+        const loadTimeout = setTimeout(() => {
+          if (!settled) {
+            settled = true;
+            reject(new Error(`La escena de ${fileName} tardó demasiado en cargar.`));
+          }
+        }, 18000);
+
+        scene.addEventListener("loaded", () => {
+          if (settled) return;
+          const system = scene.systems["mindar-image-system"];
+          if (!system) {
+            settled = true;
+            clearTimeout(loadTimeout);
+            reject(new Error(`No se pudo iniciar MindAR para ${fileName}.`));
+            return;
+          }
+          settled = true;
+          clearTimeout(loadTimeout);
+          resolve({ scene, system });
+        }, { once: true });
+
+        cameraWrap.appendChild(scene);
+      });
+    }
+
+    /* =========================================================
+       24. RECONOCIMIENTO DE UN PERSONAJE
+       Se detiene el motor, se oculta la cámara y se presenta
+       la tarjeta con el botón para abrir la URL configurada.
+       ========================================================= */
+    async function recognizeTarget(item) {
+      recognized = true;
+      scanning = false;
+      selectedTarget = item;
+      cycleToken++;
+      clearGroupTimer();
+
+      document.querySelector("#resultName").textContent = item.name || "Personaje";
+      document.querySelector("#resultBook").textContent = item.book || "READMIND";
+      document.querySelector("#resultDescription").textContent = item.description || "";
+      const image = document.querySelector("#resultImage");
+      image.src = item.image || "";
+      image.alt = item.name || "Personaje";
+
+      result.classList.add("show");
+      guide.style.display = "none";
+      hint.textContent = "¡Ilustración reconocida!";
+      status.textContent = "¡Lo encontramos! Ahora descubrí su contenido.";
+      cameraWrap.classList.remove("scanning");
+      document.body.classList.remove("is-scanning");
+      cameraWrap.classList.add("recognized");
+      startBtn.hidden = true;
+      againBtn.hidden = false;
+
+      await stopCurrentScene();
+    }
+
+    /* =========================================================
+       25. PASAR AUTOMÁTICAMENTE AL SIGUIENTE ARCHIVO
+       Cuando se agota el tiempo de búsqueda de un grupo, se
+       detiene esa escena y se carga el siguiente .mind.
+       Al llegar al último, vuelve al primero.
+       ========================================================= */
+    /* =========================================================
+       26. INICIAR UN GRUPO / ARCHIVO .MIND
+       ========================================================= */
+    async function startGroup(groupIndex, token) {
+      if (!scanning || recognized || token !== cycleToken) return;
+
+      const fileName = selectedBook.file;
+      status.textContent = "Buscando imagen…";
+      hint.textContent = "Buscando imagen";
+
+      try {
+        const { scene, system } = await createSceneForFile(fileName, groupIndex);
+        if (!scanning || recognized || token !== cycleToken) {
+          try { await system.stop(); } catch (e) {}
+          if (scene.parentNode) scene.parentNode.removeChild(scene);
+          return;
+        }
+
+        currentScene = scene;
+        currentSystem = system;
+
+        // Esperar a que MindAR confirme que el motor está listo.
+        await system.start();
+
+        if (!scanning || recognized || token !== cycleToken) return;
+
+        status.textContent = "Buscando imagen…";
+        hint.textContent = "Buscando imagen";
+      } catch (error) {
+        console.error("Error al cargar", fileName, error);
+        if (!scanning || recognized || token !== cycleToken) return;
+
+        status.textContent = `No se pudo cargar ${fileName}. Verificá que el archivo exista.`;
+        scanning = false;
+        cameraWrap.classList.remove("scanning");
+        document.body.classList.remove("is-scanning");
+        startBtn.hidden = false;
+      }
+    }
+
+    /* =========================================================
+       27. BOTÓN COMENZAR A ESCANEAR
+       La cámara se activa únicamente después de tocar este botón,
+       requisito de seguridad de los navegadores móviles.
+       ========================================================= */
+    startBtn.addEventListener("click", async () => {
+      errorBox.classList.remove("show");
+      result.classList.remove("show");
+      selectedTarget = null;
+      recognized = false;
+      if (!selectedBook) {
+        showError("Primero seleccioná uno de los tres libros.");
+        return;
+      }
+      const bookTargets = targets.filter(item => item.file === selectedBook.file);
+      if (!bookTargets.length) {
+        showError(`Todavía no hay símbolos configurados para ${selectedBook.name}. Revisá READMIND_TARGETS en config.js.`);
+        return;
+      }
+      scanning = true;
+      cycleToken++;
+      const token = cycleToken;
+      startBtn.disabled = true;
+      startBtn.hidden = true;
+      againBtn.hidden = true;
+      guide.style.display = "flex";
+      cameraWrap.classList.remove("recognized");
+      cameraWrap.classList.add("scanning");
+      document.body.classList.add("is-scanning");
+      status.textContent = "Preparando cámara…";
+      hint.textContent = "Buscando imagen";
+      await startGroup(0, token);
+      startBtn.disabled = false;
+    });
+
+    books.forEach(book => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "book-option";
+      button.setAttribute("aria-label", `Seleccionar libro ${book.name}`);
+      button.setAttribute("aria-pressed", "false");
+      const image = document.createElement("img");
+      image.src = book.image;
+      image.alt = book.name;
+      button.appendChild(image);
+      button.addEventListener("click", () => {
+        if (scanning) return;
+        selectedBook = book;
+        bookOptions.querySelectorAll(".book-option").forEach(el => {
+          el.classList.remove("selected");
+          el.setAttribute("aria-pressed", "false");
+        });
+        button.classList.add("selected");
+        button.setAttribute("aria-pressed", "true");
+        errorBox.classList.remove("show");
+        status.textContent = `Libro seleccionado: ${book.name}`;
+      });
+      bookOptions.appendChild(button);
+    });
+
+    backBtn.addEventListener("click", async () => {
+      scanning = false;
+      recognized = false;
+      cycleToken++;
+      await stopCurrentScene();
+      document.body.classList.remove("is-scanning");
+      cameraWrap.classList.remove("scanning", "recognized");
+      guide.style.display = "flex";
+      result.classList.remove("show");
+      startBtn.hidden = false;
+      startBtn.disabled = false;
+      againBtn.hidden = true;
+      status.textContent = selectedBook ? `Libro seleccionado: ${selectedBook.name}` : "Seleccioná un libro para comenzar.";
+      hint.textContent = "Colocá el dibujo dentro del marco";
+    });
+
+    /* =========================================================
+       28. BOTÓN ESCANEAR OTRO DIBUJO
+       Reinicia el ciclo desde el primer archivo .mind.
+       ========================================================= */
+    againBtn.addEventListener("click", async () => {
+      await stopCurrentScene();
+      document.body.classList.remove("is-scanning");
+      cameraWrap.classList.remove("scanning", "recognized");
+      result.classList.remove("show");
+      againBtn.hidden = true;
+      startBtn.hidden = false;
+      startBtn.disabled = false;
+      startBtn.click();
+    });
+
+    /* =========================================================
+       29. BOTÓN DESCUBRIR CONTENIDO
+       Abre la página web definida en el campo url de config.js.
+       ========================================================= */
+    openBtn.addEventListener("click", () => {
+      if (!selectedTarget) return;
+      const url = selectedTarget.url;
+      if (!url || url.startsWith("REEMPLAZAR_")) {
+        showError("Todavía falta configurar la dirección web de este personaje. Editá su campo url en config.js.");
+        return;
+      }
+      window.location.href = url;
+    });
+
+    /* =========================================================
+       30. SERVICE WORKER
+       Mantiene la aplicación actualizada. Los archivos .mind se
+       consultan desde GitHub Pages y se almacenan tras descargarse.
+       ========================================================= */
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(error =>
+          console.warn("No se pudo registrar el service worker:", error)
+        );
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
