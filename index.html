@@ -654,7 +654,7 @@ body > main {
   /* APARIENCIA */
   padding: 9px 18px;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.78);
+  background: transparent;
 
   color: #ffffff;
   font-size: 19px;
@@ -662,7 +662,7 @@ body > main {
   text-align: center;
   line-height: 1.2;
 
-  box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+
   pointer-events: none;
 }
 
@@ -1055,7 +1055,7 @@ skipNextScanSound = false;
       }
       const bookTargets = targets.filter(item => item.file === selectedBook.file);
       if (!bookTargets.length) {
-        showError(`Todavía no hay símbolos configurados para ${selectedBook.name}. Revisá READMIND_TARGETS en config.js.`);
+      showError("¡Libro disponible proximamente!");;
         return;
       }
       // Confirmar que el círculo muestre el libro que se va a escanear.
