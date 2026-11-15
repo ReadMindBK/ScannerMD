@@ -535,6 +535,142 @@ body > main {
     box-shadow: none;
   }
 }
+  
+    /* =========================================================
+       31. PERSONALIZAR EL BOTÓN VOLVER
+       Modificá estos cuatro valores para cambiar su tamaño:
+       - padding: alto y ancho interno del botón.
+       - font-size: tamaño del texto.
+       - min-width: ancho mínimo del botón.
+       ========================================================= */
+    .camera-back {
+      padding: 15px 42px;   /* ALTO 15px | ANCHO 42px */
+      font-size: 20px;      /* TAMAÑO DEL TEXTO */
+      min-width: 180px;     /* ANCHO MÍNIMO */
+      border-radius: 13px;  /* REDONDEO DE LAS ESQUINAS */
+    }
+
+    /* =========================================================
+       32. ANIMACIÓN PERMANENTE DEL TÍTULO SCANNER
+       Se aplica tanto al encabezado principal como al encabezado
+       que aparece durante el escaneo.
+       Modificá:
+       - 3.2s: duración de cada latido (menos = más rápido).
+       - scale(1.045): intensidad del agrandamiento.
+       - sombras: intensidad del resplandor.
+       ========================================================= */
+    .brand-title {
+      transform-origin: center center;
+      animation: scannerHeartbeat 3.2s ease-in-out infinite;
+    }
+
+    @keyframes scannerHeartbeat {
+      0%, 100% {
+        transform: scale(1);
+        text-shadow:
+          0 0 3px #fff,
+          0 0 7px #fff,
+          0 0 1px #fff;
+      }
+      45% {
+        transform: scale(1.045);
+        text-shadow:
+          0 0 4px #fff,
+          0 0 10px #fff,
+          0 0 17px #ffffffaa;
+      }
+      58% {
+        transform: scale(1.015);
+        text-shadow:
+          0 0 4px #fff,
+          0 0 9px #fff,
+          0 0 12px #ffffff88;
+      }
+    }
+
+    /* =========================================================
+       33. LOGO CIRCULAR DEL LIBRO DURANTE EL ESCANEO
+       - width / height: tamaño del círculo.
+       - top: distancia desde arriba de la pantalla.
+       - border: grosor y color del borde.
+       El logo toma automáticamente la imagen del libro elegido.
+       ========================================================= */
+    .scan-book-logo {
+      display: none;
+      position: absolute;
+      z-index: 5;
+      top: 140px;            /* DISTANCIA DESDE ARRIBA */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;          /* ANCHO DEL CÍRCULO */
+      height: 100px;         /* ALTO DEL CÍRCULO */
+      overflow: hidden;
+      border: 4px solid #e5b95f;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 3px 15px #0008;
+      pointer-events: none;
+    }
+
+    .scan-book-logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    body.is-scanning .camera-wrap .scan-book-logo {
+      display: block;
+    }
+
+    /* Mantiene el movimiento sutil también en dispositivos
+       que solicitan movimiento reducido, pero con menos efecto. */
+    @media (prefers-reduced-motion: reduce) {
+      .brand-title {
+        animation-duration: 6s;
+      }
+    }
+
+/* =========================================================
+   34. TÍTULO DEL LIBRO DEBAJO DEL LOGO
+   ========================================================= */
+
+.scan-book-title {
+  display: none;
+  position: absolute;
+  z-index: 6;
+
+  /* POSICIÓN: distancia desde arriba */
+  top: 246px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* TAMAÑO Y ANCHO */
+  width: max-content;
+  max-width: 85%;
+
+  /* APARIENCIA */
+  padding: 9px 18px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.78);
+
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+
+  box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+
+/* Mostrar el título cuando la cámara está activa */
+body.is-scanning .camera-wrap .scan-book-title {
+  display: block;
+}
+
   </style>
 </head>
 
@@ -574,6 +710,13 @@ body > main {
       <!-- La escena A-Frame se crea desde JavaScript para poder
            cargar cada archivo .mind de forma independiente. -->
       <div class="camera-wrap" id="cameraWrap">
+        <!-- LOGO DEL LIBRO SELECCIONADO: aparece al activar la cámara -->
+        <div class="scan-book-logo" id="scanBookLogo" aria-hidden="true">
+          <img id="scanBookLogoImage" src="" alt="">
+        </div>
+<!-- NOMBRE DEL LIBRO DEBAJO DEL LOGO -->
+<div class="scan-book-title" id="scanBookTitle"></div>
+
         <div class="camera-guide" id="guide">
           <div class="frame"></div>
         </div>
@@ -652,6 +795,9 @@ body > main {
     const openBtn = document.querySelector("#openBtn");
     const backBtn = document.querySelector("#backBtn");
     const bookOptions = document.querySelector("#bookOptions");
+    const scanBookLogo = document.querySelector("#scanBookLogo");
+    const scanBookLogoImage = document.querySelector("#scanBookLogoImage");
+    const scanBookTitle = document.querySelector("#scanBookTitle");
     const books = Array.isArray(window.READMIND_BOOKS) ? window.READMIND_BOOKS : [];
     let selectedBook = null;
 
@@ -912,6 +1058,13 @@ skipNextScanSound = false;
         showError(`Todavía no hay símbolos configurados para ${selectedBook.name}. Revisá READMIND_TARGETS en config.js.`);
         return;
       }
+      // Confirmar que el círculo muestre el libro que se va a escanear.
+      scanBookLogoImage.src = selectedBook.image || "";
+      scanBookLogoImage.alt = selectedBook.name || "Libro seleccionado";
+
+// Mostrar el nombre del libro debajo del logo.
+scanBookTitle.textContent = selectedBook.name || "";
+
       scanning = true;
       cycleToken++;
       const token = cycleToken;
@@ -941,6 +1094,12 @@ skipNextScanSound = false;
       button.addEventListener("click", () => {
         if (scanning) return;
         selectedBook = book;
+
+        // Actualizar el logo que se mostrará sobre el marco de la cámara.
+        scanBookLogoImage.src = book.image || "";
+        scanBookLogoImage.alt = book.name || "Libro seleccionado";
+        scanBookTitle.textContent = book.name || "";
+
         playSound(soundBook);
         bookOptions.querySelectorAll(".book-option").forEach(el => {
           el.classList.remove("selected");
