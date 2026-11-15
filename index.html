@@ -671,6 +671,70 @@ body.is-scanning .camera-wrap .scan-book-title {
   display: block;
 }
 
+/* =========================================================
+   35. VENTANA DE INVITACIÓN PARA INSTALAR READMIND
+   ========================================================= */
+
+.install-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: #101b2ccc;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.install-overlay.show {
+  display: flex;
+}
+
+.install-box {
+  width: 100%;
+  max-width: 370px;
+  padding: 27px 22px;
+  border-radius: 22px;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 10px 35px #0005;
+}
+
+.install-box h2 {
+  margin: 0 0 12px;
+  color: #914760;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+
+.install-box p {
+  margin: 0 0 20px;
+  color: #637084;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.install-button {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 13px;
+  background: #914760;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.install-close {
+  margin-top: 14px;
+  border: 0;
+  background: transparent;
+  color: #637084;
+  font-size: 14px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 
@@ -745,6 +809,26 @@ body.is-scanning .camera-wrap .scan-book-title {
     </section>
   </main>
   <div class="page-footer" aria-hidden="true"></div>
+
+<!-- ===== INVITACIÓN PARA INSTALAR READMIND ===== -->
+
+<div class="install-overlay" id="installOverlay">
+  <div class="install-box">
+    <h2>¡Llevá READMIND en tu celular!</h2>
+
+    <p id="installMessage">
+      Instalá READMIND para acceder fácilmente desde tu pantalla de inicio.
+    </p>
+
+    <button class="install-button" id="installButton">
+      INSTALAR READMIND
+    </button>
+
+    <button class="install-close" id="installClose">
+      Ahora no
+    </button>
+  </div>
+</div>
 
 <!-- ===== SONIDOS DEL ESCÁNER READMIND ===== -->
 
@@ -1177,5 +1261,99 @@ startBtn.click();
   })();
 
   </script>
+<script>
+(() => {
+  "use strict";
+
+  const overlay = document.querySelector("#installOverlay");
+  const message = document.querySelector("#installMessage");
+  const installButton = document.querySelector("#installButton");
+  const closeButton = document.querySelector("#installClose");
+
+  let deferredPrompt = null;
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  const isAndroid = /android/i.test(navigator.userAgent);
+
+  const isInstalled =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  function closeInstall() {
+    overlay.classList.remove("show");
+  }
+
+  if (isInstalled) return;
+
+  // Detectar cuándo el navegador permite la instalación nativa.
+  window.addEventListener("beforeinstallprompt", event => {
+    event.preventDefault();
+    deferredPrompt = event;
+
+    installButton.textContent = "INSTALAR READMIND";
+  });
+
+  // Detectar si la instalación se completó.
+  window.addEventListener("appinstalled", () => {
+    deferredPrompt = null;
+    closeInstall();
+  });
+
+  closeButton.addEventListener("click", closeInstall);
+
+  installButton.addEventListener("click", async () => {
+
+    // Android y navegadores compatibles.
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+
+      const result = await deferredPrompt.userChoice;
+
+      if (result.outcome === "accepted") {
+        closeInstall();
+      }
+
+      deferredPrompt = null;
+      return;
+    }
+
+    // iPhone y iPad.
+    if (isIOS) {
+      message.textContent =
+        "Para instalar READMIND, tocá el botón Compartir de Safari y después elegí «Agregar a pantalla de inicio».";
+
+      installButton.hidden = true;
+      return;
+    }
+
+    // Android cuando el navegador no ofrece el aviso automático.
+    if (isAndroid) {
+      message.textContent =
+        "Abrí el menú de Chrome (⋮), buscá «Instalar aplicación» o «Agregar a pantalla principal» y confirmá la instalación.";
+
+      installButton.hidden = true;
+      return;
+    }
+
+    message.textContent =
+      "Abrí READMIND desde el navegador de tu celular para instalar la aplicación.";
+
+    installButton.hidden = true;
+  });
+
+  // Mostrar la invitación al entrar a la página.
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      if (!isInstalled) {
+        overlay.classList.add("show");
+      }
+    }, 800);
+  });
+
+})();
+</script>
+
 </body>
 </html>
