@@ -4,7 +4,7 @@ Proximamente/* ================================================================
    config.js y los archivos .mind usan red primero, para que al
    publicar nuevos libros no quede una lista vieja en el celular.
    ================================================================ */
-const CACHE_NAME = "readmind-scanner-books-v6";
+const CACHE_NAME = "readmind-scanner-books-v7";
 const APP_FILES = [
   "./",
   "./index.html",
