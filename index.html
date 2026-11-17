@@ -257,7 +257,7 @@ transform: translateY(15px);
   border-radius: 12px;
   background: #fff1ed;
   color: #8b3327;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3;
   text-align: center;
 }
@@ -871,7 +871,7 @@ margin-bottom: 0;
     /* Pie gráfico con botón W independiente y editable. */
 .page-footer {
   /* AJUSTES MANUALES */
-  --footer-bajar: 50px;
+  --footer-bajar: 30px;
   --footer-alto: 122px;
 
   position: relative !important;
@@ -885,7 +885,7 @@ margin-bottom: 0;
   background-color: #ffffff !important;
   background-image: url("./assets/footer-bar.png") !important;
   background-position: center var(--footer-bajar) !important;
-  background-size: 563px 72px !important;
+  background-size: 563px 105px !important;
   background-repeat: no-repeat !important;
 
   overflow: visible !important;
@@ -1060,6 +1060,52 @@ body.is-scanning .camera-hint {
   z-index: 10002;
   font-size: 16px;
 }
+/* ===== POSICIÓN DEL TEXTO BUSCANDO IMAGEN ===== */
+
+:root {
+  --distancia-buscando: 15px; /* MODIFICAR DISTANCIA */
+}
+
+.camera-wrap.scanning .camera-hint {
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+
+
+    /* =====================================================
+       POSICIÓN DEL MENSAJE "BUSCANDO IMAGEN"
+       Cambiá --distancia-buscando para acercar o alejar el texto
+       del borde inferior del marco.
+       ===================================================== */
+    :root {
+      --distancia-buscando: 15px;
+    }
+
+    .camera-wrap.scanning .camera-guide .frame {
+      position: relative;
+    }
+
+    .camera-wrap.scanning .camera-guide .frame .camera-hint {
+      position: absolute !important;
+      top: calc(100% + var(--distancia-buscando)) !important;
+      bottom: auto !important;
+      left: 50% !important;
+      right: auto !important;
+      width: calc(100% + 30px);
+      transform: translateX(-50%) !important;
+      z-index: 10002 !important;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      font-size: clamp(12px, 3.6vw, 18px);
+      line-height: 1.2;
+      text-shadow: 0 1px 4px #000;
+      white-space: normal;
+    }
+
   </style>
 </head>
 
@@ -1118,7 +1164,7 @@ body.is-scanning .camera-hint {
       </div>
 
       <div class="camera-hint" id="cameraHint">Colocá la imagen dentro del marco</div>
-      <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
+      <p class="status" id="status">Cuando quieras, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
       <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
       </div>
@@ -1213,6 +1259,20 @@ body.is-scanning .camera-hint {
     const againBtn = document.querySelector("#againBtn");
     const guide = document.querySelector("#guide");
     const hint = document.querySelector("#cameraHint");
+    const hintHome = hint.parentNode;
+    const hintHomeNext = hint.nextSibling;
+    const frame = guide.querySelector(".frame");
+
+    // Durante el escaneo, el mensaje se coloca dentro del marco
+    // para que su posición dependa del borde inferior real del marco.
+    function placeHintBelowFrame() {
+      frame.appendChild(hint);
+    }
+
+    function restoreHintPosition() {
+      hintHome.insertBefore(hint, hintHomeNext);
+    }
+
     const result = document.querySelector("#result");
     const errorBox = document.querySelector("#errorBox");
     const openBtn = document.querySelector("#openBtn");
@@ -1453,6 +1513,7 @@ function showError(message) {
         scanning = false;
         cameraWrap.classList.remove("scanning");
         document.body.classList.remove("is-scanning");
+        restoreHintPosition();
         startBtn.hidden = false;
       }
     }
@@ -1473,7 +1534,7 @@ skipNextScanSound = false;
       selectedTarget = null;
       recognized = false;
       if (!selectedBook) {
-        showError("Primero seleccioná uno de los libros");
+        showError("Primero seleccioná un libro");
         return;
       }
       const bookTargets = targets.filter(item => item.file === selectedBook.file);
@@ -1483,7 +1544,7 @@ skipNextScanSound = false;
       }
       // Confirmar que el círculo muestre el libro que se va a escanear.
       scanBookLogoImage.src = selectedBook.image || "";
-      scanBookLogoImage.alt = selectedBook.name || "Libro seleccionado";
+      scanBookLogoImage.alt = selectedBook.name || "Libro";
 
 // Mostrar el nombre del libro debajo del logo.
 scanBookTitle.textContent = selectedBook.name || "";
@@ -1495,6 +1556,7 @@ scanBookTitle.textContent = selectedBook.name || "";
       startBtn.hidden = true;
       againBtn.hidden = true;
       guide.style.display = "flex";
+      placeHintBelowFrame();
       cameraWrap.classList.remove("recognized");
       cameraWrap.classList.add("scanning");
       document.body.classList.add("is-scanning");
@@ -1520,7 +1582,7 @@ scanBookTitle.textContent = selectedBook.name || "";
 
         // Actualizar el logo que se mostrará sobre el marco de la cámara.
         scanBookLogoImage.src = book.image || "";
-        scanBookLogoImage.alt = book.name || "Libro seleccionado";
+        scanBookLogoImage.alt = book.name || "Libro";
         scanBookTitle.textContent = book.name || "";
 
         playSound(soundBook);
@@ -1531,7 +1593,7 @@ scanBookTitle.textContent = selectedBook.name || "";
         button.classList.add("selected");
         button.setAttribute("aria-pressed", "true");
         errorBox.classList.remove("show");
-        status.textContent = `Libro seleccionado: ${book.name}`;
+        status.textContent = `Libro: ${book.name}`;
       });
       bookOptions.appendChild(button);
     });
@@ -1545,11 +1607,12 @@ scanBookTitle.textContent = selectedBook.name || "";
       document.body.classList.remove("is-scanning");
       cameraWrap.classList.remove("scanning", "recognized");
       guide.style.display = "flex";
+      restoreHintPosition();
       result.classList.remove("show");
       startBtn.hidden = false;
       startBtn.disabled = false;
       againBtn.hidden = true;
-      status.textContent = selectedBook ? `Libro seleccionado: ${selectedBook.name}` : "Seleccioná un libro para comenzar.";
+      status.textContent = selectedBook ? `Libro: ${selectedBook.name}` : "Seleccioná un libro para comenzar.";
       hint.textContent = "Colocá la imagen dentro del marco";
     });
 
@@ -1697,7 +1760,7 @@ startBtn.click();
 
 <script>
   // DIRECCIÓN DEL BOTÓN W DEL PIE DE PÁGINA: reemplazá el texto por tu URL.
-  const FOOTER_URL = "PEGAR_AQUI_TU_URL";
+  const FOOTER_URL = "https://readmindbk.github.io/WEB/";
   document.querySelector("#footerWebButton").addEventListener("click", () => {
     if (!FOOTER_URL || FOOTER_URL === "PEGAR_AQUI_TU_URL") {
       alert("Todavía falta configurar la dirección web en FOOTER_URL, al final de index.html.");
