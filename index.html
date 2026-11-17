@@ -946,6 +946,120 @@ margin-bottom: 0;
       .footer-art { min-height: 58px; }
     }
 
+
+/* =====================================================
+   CONTENEDOR CENTRAL CON IMAGEN DE FONDO EDITABLE
+   Para cambiar el tamaño, modificá width o max-width.
+   La proporción de la imagen se conserva automáticamente.
+   ===================================================== */
+.scan-card {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.scan-visual {
+  position: relative;
+  width: 80%; 
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 372 / 447;
+  background-image: url("./assets/camara-base.png");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.camera-wrap {
+  position: absolute !important;
+  left: 10.5% !important;
+  top: 20.5% !important;
+  width: 78% !important;
+  height: 38.5% !important;
+  min-height: 0 !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  background: transparent !important;
+}
+.camera-wrap:not(.scanning) a-scene { display: none !important; }
+.camera-wrap:not(.scanning) .camera-guide { display: none !important; }
+.camera-wrap.scanning .camera-guide { display: flex !important; }
+.camera-hint {
+  position: absolute !important;
+  top: 7.3% !important;
+  bottom: auto !important;
+  left: 7% !important;
+  right: 7% !important;
+  transform: none !important;
+  z-index: 5;
+  color: #fff;
+  text-align: center;
+  font-size: clamp(12px, 3.6vw, 18px);
+  line-height: 1.2;
+  text-shadow: 0 1px 4px #000;
+}
+.scan-visual > .status {
+  position: absolute;
+  top: 75.3%;
+  left: 5%;
+  width: 90%;
+  margin: 0 !important;
+  min-height: 0;
+  color: #fff !important;
+  text-align: center;
+  font-size: clamp(12px, 3.6vw, 17px);
+  line-height: 1.25;
+  z-index: 5;
+}
+.scan-visual > #startBtn,
+.scan-visual > #againBtn {
+  position: absolute;
+  top: 83.1%;
+  left: 5%;
+  width: 90%;
+  height: 11.8%;
+  min-height: 0;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  border: 0;
+  border-radius: 12px;
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-size: clamp(12px, 3.8vw, 17px) !important;
+  font-weight: 800;
+  letter-spacing: .5px;
+  z-index: 6;
+}
+.scan-visual > #againBtn { background: transparent !important; }
+.scan-visual [hidden] { display: none !important; }
+.scan-card .result { margin-top: 18px; }
+
+/* Durante el escaneo, la cámara vuelve a ocupar toda la pantalla. */
+.camera-wrap.scanning {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+  background: #000 !important;
+}
+.camera-wrap.scanning a-scene { display: block !important; }
+.camera-wrap.scanning .camera-guide {
+  position: absolute;
+  inset: 129px 0 0;
+}
+body.is-scanning .camera-hint {
+  position: fixed !important;
+  top: auto !important;
+  bottom: 130px !important;
+  left: 15px !important;
+  right: 15px !important;
+  z-index: 10002;
+  font-size: 16px;
+}
   </style>
 </head>
 
@@ -977,6 +1091,7 @@ margin-bottom: 0;
 
     <div class="scan-area">
     <section class="scan-card">
+      <div class="scan-visual">
       <!-- La escena A-Frame se crea desde JavaScript para poder
            cargar cada archivo .mind de forma independiente. -->
       <div class="camera-wrap" id="cameraWrap">
@@ -1000,12 +1115,13 @@ margin-bottom: 0;
         <div class="camera-guide" id="guide">
           <div class="frame"></div>
         </div>
-        <div class="camera-hint" id="cameraHint">Colocá la imagen dentro del marco</div>
       </div>
 
+      <div class="camera-hint" id="cameraHint">Colocá la imagen dentro del marco</div>
       <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
       <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
+      </div>
 
       <!-- La tarjeta se muestra al reconocer cualquier objetivo
            de cualquiera de los archivos .mind configurados. -->
