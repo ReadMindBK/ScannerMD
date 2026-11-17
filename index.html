@@ -251,18 +251,31 @@
     /* =========================================================
        14. MENSAJES DE ERROR Y PIE DE PÁGINA
        ========================================================= */
-    .error {
-      display: none;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 12px;
-      background: #fff1ed;
-      color: #8b3327;
-      font-size: 16px;
-      line-height: 1.45;
-      text-align: center;
-    }
-    .error.show { display: block; }
+ .error {
+  display: none;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #fff1ed;
+  color: #8b3327;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: center;
+}
+.error.show { display: block; }
+
+/* El mensaje queda fuera de la tarjeta y no modifica su altura. */
+.scan-area {
+  position: relative;
+  width: 100%;
+}
+#errorBox {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  margin: 0 !important;
+  z-index: 20;
+}
     .foot {
       margin: 19px 0 0;
       text-align: center;
@@ -404,16 +417,42 @@
     }
     .scan-card:has(.camera-wrap:not(.scanning)) #startBtn { }
     .camera-hint { bottom:18px; font-size:18px; }
+
+/* ===== ENCABEZADO DURANTE EL ESCANEO ===== */
+
 .scan-header {
-  background-color:#914760;
-  background-image:url("./assets/header-scanner.jpg");
-  background-position:center center;
-  background-size:563px 124px;
-  background-repeat:no-repeat;
+  display: none;
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 129px;
+  min-height: 129px;
+
+  background-color: #ffffff;
+  background-image: url("./assets/header-scanner2.jpg");
+  background-position: center top;
+  background-size: 563px 129px;
+  background-repeat: no-repeat;
+}
+
+/* Mostrarlo únicamente mientras se escanea */
+body.is-scanning .camera-wrap .scan-header {
+  display: block;
 }
     body.is-scanning .scan-header { display:block; }
-    .camera-wrap.scanning .camera-guide { top:124px; }
-    .camera-wrap.scanning .camera-hint { bottom:22px; }
+    .camera-wrap.scanning .camera-guide { top:129px; }
+.camera-wrap.scanning .camera-hint {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 130px !important;
+  left: 15px;
+  right: 15px;
+  text-align: center;
+  z-index: 10002;
+  font-size: 16px;
+}
 .camera-back {
   display:none;
   position:fixed;
@@ -502,6 +541,7 @@ body {
 
 /* Columna principal siempre centrada */
 body > main {
+padding-bottom: 10px !important;
   display: block;
   width: min(563px, calc(100% - 32px));
   max-width: 563px;
@@ -564,6 +604,7 @@ body > main {
       font-size: 20px;      /* TAMAÑO DEL TEXTO */
       min-width: 180px;     /* ANCHO MÍNIMO */
       border-radius: 13px;  /* REDONDEO DE LAS ESQUINAS */
+      bottom: 30px; /* SUBE O BAJA EL BOTÓN */
     }
 
     /* =========================================================
@@ -806,6 +847,7 @@ body.is-scanning .camera-wrap .scan-book-title {
 
     /* Tarjeta de escaneo más compacta, como en la referencia. */
     .scan-card { padding: 12px; }
+margin-bottom: 0;
     .camera-wrap {
       height: min(31svh, 280px);
       min-height: 190px;
@@ -828,22 +870,25 @@ body.is-scanning .camera-wrap .scan-book-title {
 
     /* Pie gráfico con botón W independiente y editable. */
 .page-footer {
+  /* AJUSTES MANUALES */
+  --footer-bajar: 50px;
+  --footer-alto: 122px;
+
   position: relative !important;
   width: 100% !important;
-  height: 72px !important;
-  min-height: 72px !important;
-  max-height: 72px !important;
-  flex: 0 0 72px !important;
 
+  height: var(--footer-alto) !important;
+  min-height: var(--footer-alto) !important;
+  max-height: none !important;
+  flex: 0 0 var(--footer-alto) !important;
 
+  background-color: #ffffff !important;
+  background-image: url("./assets/footer-bar.png") !important;
+  background-position: center var(--footer-bajar) !important;
+  background-size: 563px 72px !important;
+  background-repeat: no-repeat !important;
 
-background-color: #ffffff !important;
-background-image: url("./assets/footer-bar.png") !important;
-background-position: center center !important;
-background-size: 563px 72px !important;
-background-repeat: no-repeat !important;
-
-  overflow: hidden;
+  overflow: visible !important;
 }
 
 .page-footer img {
@@ -864,8 +909,8 @@ background-repeat: no-repeat !important;
   position: absolute;
 
   /* Posición alineada con el diseño de 563 px */
-  top: 60%;
-  right: max(8px, calc((100% - 490px) / 2 + 8px));
+  top: calc(var(--footer-bajar) + 43px);
+  right: max(8px, calc((100% - 480px) / 2 + 8px));
   transform: translateY(-50%);
 
   /* Tamaño fijo */
@@ -918,14 +963,7 @@ background-repeat: no-repeat !important;
 
   <h1 class="book-picker-title">PRIMERO SELECCIONA EL LIBRO</h1>
 </header>
-<div class="scan-header">
-  <div class="header-content">
-    <div class="brand-title">SCANNER</div>
-    <div class="brand-subtitle">
-      EXPLORA - DESCUBRE - APRENDE
-    </div>
-  </div>
-</div>
+
   <button class="camera-back" id="backBtn" type="button">VOLVER</button>
 
   <!-- =========================================================
@@ -937,10 +975,21 @@ background-repeat: no-repeat !important;
       <div class="book-options" id="bookOptions"></div>
     </section>
 
+    <div class="scan-area">
     <section class="scan-card">
       <!-- La escena A-Frame se crea desde JavaScript para poder
            cargar cada archivo .mind de forma independiente. -->
       <div class="camera-wrap" id="cameraWrap">
+
+  <!-- ENCABEZADO VISIBLE DURANTE EL ESCANEO -->
+  <div class="scan-header">
+    <div class="header-content">
+      <div class="brand-title">SCANNER</div>
+      <div class="brand-subtitle">
+        EXPLORA - DESCUBRE - APRENDE
+      </div>
+    </div>
+  </div>
         <!-- LOGO DEL LIBRO SELECCIONADO: aparece al activar la cámara -->
         <div class="scan-book-logo" id="scanBookLogo" aria-hidden="true">
           <img id="scanBookLogoImage" src="" alt="">
@@ -957,7 +1006,6 @@ background-repeat: no-repeat !important;
       <p class="status" id="status">Cuando estés listo, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
       <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
-      <div class="error" id="errorBox" role="alert"></div>
 
       <!-- La tarjeta se muestra al reconocer cualquier objetivo
            de cualquiera de los archivos .mind configurados. -->
@@ -974,6 +1022,8 @@ background-repeat: no-repeat !important;
         <button class="primary" id="openBtn">DESCUBRIR CONTENIDO →</button>
       </section>
     </section>
+    <div class="error" id="errorBox" role="alert"></div>
+    </div>
   </main>
   <footer class="page-footer" aria-label="Pie de página READMIND">
     <img class="footer-art" src="./assets/footer-bar.png" alt="READMIND, redes sociales y nuestro sitio web">
