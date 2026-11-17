@@ -270,7 +270,7 @@ transform: translateY(15px);
 }
 #errorBox {
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% + -5px);
   left: 0;
   width: 100%;
   margin: 0 !important;
@@ -530,6 +530,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Encabezado y pie ocupan todo el ancho */
@@ -870,25 +873,40 @@ margin-bottom: 0;
 
     /* Pie gráfico con botón W independiente y editable. */
 .page-footer {
-  /* AJUSTES MANUALES */
-  --footer-bajar: 30px;
-  --footer-alto: 122px;
+  --footer-bajar: 16px;
+  --footer-linea-bordo: 32px;
 
   position: relative !important;
   width: 100% !important;
 
-  height: var(--footer-alto) !important;
-  min-height: var(--footer-alto) !important;
-  max-height: none !important;
-  flex: 0 0 var(--footer-alto) !important;
+  height: min(32.86vw, 185px) !important;
+  min-height: 0 !important;
+  max-height: 185px !important;
+  flex: 0 0 min(32.86vw, 185px) !important;
 
   background-color: #ffffff !important;
-  background-image: url("./assets/footer-bar.png") !important;
-  background-position: center var(--footer-bajar) !important;
-  background-size: 563px 185px !important;
+
+  background-image:
+    url("./assets/footer-bar.png"),
+    linear-gradient(
+      to bottom,
+      #ffffff 0,
+      #ffffff var(--footer-linea-bordo),
+      #914760 var(--footer-linea-bordo),
+      #914760 100%
+    ) !important;
+
+  background-position:
+    center var(--footer-bajar),
+    center center !important;
+
+  background-size:
+    min(100vw, 563px) auto,
+    100% 100% !important;
+
   background-repeat: no-repeat !important;
 
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .page-footer img {
@@ -909,7 +927,7 @@ margin-bottom: 0;
   position: absolute;
 
   /* Posición alineada con el diseño de 563 px */
-  top: calc(var(--footer-bajar) + 43px);
+  top: calc(var(--footer-bajar) + 55px);
   right: max(8px, calc((100% - 480px) / 2 + 8px));
   transform: translateY(-50%);
 
@@ -1163,7 +1181,7 @@ body.is-scanning .camera-hint {
         </div>
       </div>
 
-      <div class="camera-hint" id="cameraHint">Colocá la imagen dentro del marco</div>
+      <div class="camera-hint" id="cameraHint">Encuadra la imagen</div>
       <p class="status" id="status">Cuando quieras, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
       <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
