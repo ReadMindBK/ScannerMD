@@ -1033,8 +1033,7 @@ margin-bottom: 0;
   line-height: 1.25;
   z-index: 5;
 }
-.scan-visual > #startBtn,
-.scan-visual > #againBtn {
+.scan-visual > #startBtn {
   position: absolute;
   top: 83.1%;
   left: 5%;
@@ -1053,9 +1052,86 @@ margin-bottom: 0;
   letter-spacing: .5px;
   z-index: 6;
 }
-.scan-visual > #againBtn { background: transparent !important; }
 .scan-visual [hidden] { display: none !important; }
-.scan-card .result { margin-top: 18px; }
+
+/* Al reconocer una imagen, desaparece camara-base.png y la tarjeta
+   ocupa y centra su contenido dentro del mismo espacio visual. */
+.scan-visual.has-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: none !important;
+}
+
+.scan-visual.has-result > .camera-hint,
+.scan-visual.has-result > .status,
+.scan-visual.has-result > #startBtn {
+  display: none !important;
+}
+
+.scan-visual .result {
+  display: none;
+  width: 90%;
+  max-width: 430px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #e9e2d3;
+  border-radius: 19px;
+  background: #fffdf8;
+  box-shadow: 0 5px 18px #14253f18;
+}
+
+.scan-visual .result.show {
+  display: block;
+  animation: rise .35s ease-out;
+}
+
+.scan-visual .result .found-tag {
+  display: block;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.scan-visual .result #againBtn {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 42px;
+  margin: 0 0 14px;
+  padding: 10px 8px !important;
+  background: #914760 !important;
+  color: #fff !important;
+  font-size: clamp(11px, 3.2vw, 15px) !important;
+  border-radius: 10px;
+  box-shadow: none !important;
+  position: static;
+}
+
+.scan-visual .result #openBtn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.scan-visual .result .result-row {
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 14px;
+}
+
+.scan-visual .result .result-image {
+  flex: 0 0 78px;
+  width: 78px;
+  height: 96px;
+}
+
+.scan-visual .result h2 {
+  font-size: clamp(18px, 4.5vw, 23px);
+}
+
+.scan-visual .result .description {
+  font-size: 12px;
+}
 
 /* Durante el escaneo, la cámara vuelve a ocupar toda la pantalla. */
 .camera-wrap.scanning {
@@ -1188,13 +1264,12 @@ body.is-scanning .camera-hint {
       <div class="camera-hint" id="cameraHint">Encuadra la imagen</div>
       <p class="status" id="status">Cuando quieras, activá la cámara.</p>
       <button class="primary" id="startBtn">▣ COMENZAR A ESCANEAR</button>
-      <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
-      </div>
 
-      <!-- La tarjeta se muestra al reconocer cualquier objetivo
-           de cualquiera de los archivos .mind configurados. -->
+      <!-- La tarjeta de reconocimiento ocupa el espacio de camara-base.png
+           y aparece únicamente cuando MindAR encuentra una imagen. -->
       <section class="result" id="result" aria-live="polite">
         <div class="found-tag">✓ IMAGEN RECONOCIDA</div>
+        <button class="primary secondary" id="againBtn" hidden>ESCANEAR OTRA IMAGEN</button>
         <div class="result-row">
           <img class="result-image" id="resultImage" alt="">
           <div>
@@ -1205,6 +1280,7 @@ body.is-scanning .camera-hint {
         </div>
         <button class="primary" id="openBtn">DESCUBRIR CONTENIDO →</button>
       </section>
+      </div>
     </section>
     <div class="error" id="errorBox" role="alert"></div>
     </div>
@@ -1276,6 +1352,7 @@ body.is-scanning .camera-hint {
        18. REFERENCIAS A LOS ELEMENTOS DE LA PÁGINA
        ========================================================= */
     const cameraWrap = document.querySelector("#cameraWrap");
+    const scanVisual = document.querySelector(".scan-visual");
     const status = document.querySelector("#status");
     const startBtn = document.querySelector("#startBtn");
     const againBtn = document.querySelector("#againBtn");
@@ -1481,9 +1558,10 @@ function showError(message) {
       image.alt = item.name || "Personaje";
 
       result.classList.add("show");
+      scanVisual.classList.add("has-result");
       guide.style.display = "none";
       hint.textContent = "¡Imagen reconocida!";
-      status.textContent = "¡Lo encontramos! Ahora descubrí su contenido.";
+      status.textContent = "¡Lo encontramos!";
       cameraWrap.classList.remove("scanning");
       document.body.classList.remove("is-scanning");
       cameraWrap.classList.add("recognized");
@@ -1553,6 +1631,7 @@ if (!skipNextScanSound) {
 skipNextScanSound = false;
       errorBox.classList.remove("show");
       result.classList.remove("show");
+      scanVisual.classList.remove("has-result");
       selectedTarget = null;
       recognized = false;
       if (!selectedBook) {
@@ -1631,6 +1710,7 @@ scanBookTitle.textContent = selectedBook.name || "";
       guide.style.display = "flex";
       restoreHintPosition();
       result.classList.remove("show");
+      scanVisual.classList.remove("has-result");
       startBtn.hidden = false;
       startBtn.disabled = false;
       againBtn.hidden = true;
