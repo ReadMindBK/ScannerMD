@@ -871,7 +871,7 @@ margin-bottom: 0;
       padding: 15px 12px;
     }
 
-    /* Pie gráfico con botón W independiente y editable. */
+/* Pie gráfico con botón W independiente y editable. */
 .page-footer {
   --footer-bajar: 16px;
   --footer-linea-bordo: 32px;
@@ -902,11 +902,15 @@ margin-bottom: 0;
 
   background-size:
     min(100vw, 563px) auto,
-    100% 100% !important;
+    min(100vw, 563px) 100% !important;
 
   background-repeat: no-repeat !important;
 
   overflow: hidden !important;
+}
+
+.page-footer img {
+  display: none !important;
 }
 
 .page-footer img {
@@ -932,8 +936,8 @@ margin-bottom: 0;
   transform: translateY(-50%);
 
   /* Tamaño fijo */
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   min-width: 42px;
   min-height: 42px;
 
