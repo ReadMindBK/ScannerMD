@@ -63,862 +63,352 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 0,
-    name: "HIDRA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/7.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 1,
-    name: "MINOTAURO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/8.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 2,
-    name: "QUIMERA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/9.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 3,
-    name: "CÍCLOPE",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/10.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 4,
-    name: "DRAGÓN",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/11.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 5,
-    name: "HOMBRE LOBO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/12.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 6,
-    name: "VAMPIRO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/13.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 7,
-    name: "GÁRGOLA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/14.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 8,
-    name: "FAUNO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/15.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 9,
-    name: "JÖRMUNGARDR",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/16.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 10,
-    name: "KRAKEN",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/17.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 11,
-    name: "DULLAHAN",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/18.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 12,
-    name: "BANSHEE",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/19.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 13,
-    name: "SELKIE",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/20.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 14,
-    name: "TIAMAT",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/21.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 15,
-    name: "WENDIGO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/22.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 16,
-    name: "YETI",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/23.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 17,
-    name: "KITSUNE",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/24.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 18,
-    name: "KAPPA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/25.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 19,
-    name: "ONI",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/26.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 20,
-    name: "CHUPACABRAS",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/27.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 21,
-    name: "GARUDA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/28.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 22,
-    name: "BASILISCO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/29.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 23,
-    name: "ALICORNO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/30.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 24,
-    name: "SECRETO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí el secreto del libro.",
-    image: "./assets/mito/31.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 25,
-    name: "ESFINGE",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/1.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 26,
-    name: "ANUBIS",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/2.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 27,
-    name: "MANTICORA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/3.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 28,
-    name: "CERBERO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/4.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 29,
-    name: "FÉNIX",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/5.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },  
-  {
-    file: "targets.mind",
-    index: 30,
-    name: "MEDUSA",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
-    image: "./assets/mito/6.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-
-
-
-
-
-
-
-
-
-
-  {
-    file: "targets2.mind",
-    index: 0,
     name: "7",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/7.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 1,
     name: "8",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/8.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 2,
     name: "9",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/9.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 3,
     name: "10",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/10.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 4,
     name: "11",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/11.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 5,
     name: "12",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/12.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 6,
     name: "13",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/13.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 7,
     name: "14",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/14.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 8,
     name: "15",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/15.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 9,
     name: "16",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/16.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 10,
     name: "17",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/17.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 11,
     name: "18",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/18.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 12,
     name: "19",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/19.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 13,
     name: "20",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/20.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 14,
     name: "21",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/21.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 15,
     name: "22",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/22.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 16,
     name: "23",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/23.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 17,
     name: "24",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/24.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 18,
     name: "25",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/25.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 19,
     name: "26",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/26.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 20,
     name: "27",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/27.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 21,
     name: "28",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/28.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 22,
     name: "29",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/29.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 23,
     name: "30",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/30.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 24,
     name: "31",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a la Esfinge! Descubrí su historia y sus secretos.",
     image: "./assets/mito/31.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 25,
     name: "1",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/1.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 26,
     name: "2",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/2.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 27,
     name: "3",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/3.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 28,
     name: "4",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/4.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 29,
     name: "5",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/5.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
-    file: "targets2.mind",
+    file: "targets.mind",
     index: 30,
     name: "6",
-    book: "Colores Prehistóricos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-    file: "targets3.mind",
-    index: 0,
+  },  
+  {
+    file: "targets.mind",
+    index: 31,
     name: "7",
-    book: "Colores Robóticos",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/7.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 1,
-    name: "8",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/8.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 2,
-    name: "9",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/9.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 3,
-    name: "10",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/10.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 4,
-    name: "11",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/11.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 5,
-    name: "12",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/12.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 6,
-    name: "13",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/13.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 7,
-    name: "14",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/14.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 8,
-    name: "15",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/15.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 9,
-    name: "16",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/16.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 10,
-    name: "17",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/17.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 11,
-    name: "18",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/18.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 12,
-    name: "19",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/19.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 13,
-    name: "20",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/20.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 14,
-    name: "21",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/21.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 15,
-    name: "22",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/22.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 16,
-    name: "23",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/23.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 17,
-    name: "24",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/24.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 18,
-    name: "25",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/25.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 19,
-    name: "26",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/26.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 20,
-    name: "27",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/27.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 21,
-    name: "28",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/28.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 22,
-    name: "29",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/29.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 23,
-    name: "30",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/30.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 24,
-    name: "31",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a la Esfinge! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/31.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 25,
-    name: "1",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/1.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 26,
-    name: "2",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/2.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 27,
-    name: "3",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/3.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 28,
-    name: "4",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/4.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets3.mind",
-    index: 29,
-    name: "5",
-    book: "Colores Robóticos",
-    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
-    image: "./assets/mito/5.jpg",
+    image: "./assets/mito/6.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
-    file: "targets3.mind",
+    file: "targets.mind",
+    index: 32,
+    name: "8",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
     index: 30,
     name: "6",
-    book: "Colores Robóticos",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 33,
+    name: "9",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 34,
+    name: "10",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 35,
+    name: "11",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 36,
+    name: "12",
+    book: "Colores Mitológicos",
+    description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
+    image: "./assets/mito/6.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 37,
+    name: "13",
+    book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
-
 ];
