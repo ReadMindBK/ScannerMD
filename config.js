@@ -81,7 +81,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 2,
-    name: "ANUBIS",
+    name: "MANTICORA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/3.jpg",
@@ -90,7 +90,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 3,
-    name: "MANTICORA",
+    name: "CERBERO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/4.jpg",
@@ -99,7 +99,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 4,
-    name: "CERBERO",
+    name: "FÉNIX",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/5.jpg",
@@ -108,7 +108,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 5,
-    name: "FÉNIX",
+    name: "MEDUSA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/6.jpg",
@@ -117,7 +117,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 6,
-    name: "MEDUSA",
+    name: "HIDRA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/7.jpg",
@@ -126,7 +126,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 7,
-    name: "HIDRA",
+    name: "MINOTAURO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/8.jpg",
@@ -135,25 +135,25 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 8,
-    name: "MINOTAURO",
+    name: "QUIMERA",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
+    description:"¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/9.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
     file: "targets.mind",
     index: 9,
-    name: "QUIMERA",
+    name: "CÍCLOPE",
     book: "Colores Mitológicos",
-    description:"¡Lo encontramos! Descubrí su historia y su secreto.",
+    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/10.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
   {
     file: "targets.mind",
     index: 10,
-    name: "CÍCLOPE",
+    name: "DRAGÓN",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/11.jpg",
@@ -162,7 +162,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 11,
-    name: "DRAGÓN",
+    name: "HOMBRE LOBO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/12.jpg",
@@ -171,7 +171,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 12,
-    name: "HOMBRE LOBO",
+    name: "VAMPIRO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/13.jpg",
@@ -180,7 +180,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 13,
-    name: "VAMPIRO",
+    name: "GÁRGOLA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/14.jpg",
@@ -189,7 +189,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 14,
-    name: "GÁRGOLA",
+    name: "FAUNO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/15.jpg",
@@ -198,7 +198,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 15,
-    name: "FAUNO",
+    name: "JÖRMUNGARDR",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/16.jpg",
@@ -207,7 +207,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 16,
-    name: "JÖRMUNGARDR",
+    name: "KRAKEN",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/17.jpg",
@@ -216,7 +216,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 17,
-    name: "KRAKEN",
+    name: "DULLAHAN",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/18.jpg",
@@ -225,7 +225,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 18,
-    name: "DULLAHAN",
+    name: "BANSHEE",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/19.jpg",
@@ -234,7 +234,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 19,
-    name: "BANSHEE",
+    name: "SELKIE",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/20.jpg",
@@ -243,7 +243,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 20,
-    name: "SELKIE",
+    name: "TIAMAT",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/21.jpg",
@@ -252,7 +252,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 21,
-    name: "TIAMAT",
+    name: "WENDIGO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/22.jpg",
@@ -261,7 +261,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 22,
-    name: "WENDIGO",
+    name: "YETI",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/23.jpg",
@@ -270,7 +270,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 23,
-    name: "YETI",
+    name: "KITSUNE",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/24.jpg",
@@ -279,7 +279,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 24,
-    name: "KITSUNE",
+    name: "KAPPA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/25.jpg",
@@ -288,7 +288,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 25,
-    name: "KAPPA",
+    name: "ONI",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/26.jpg",
@@ -297,7 +297,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 26,
-    name: "ONI",
+    name: "CHUPACABRAS",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/27.jpg",
@@ -306,7 +306,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 27,
-    name: "CHUPACABRAS",
+    name: "GARUDA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/28.jpg",
@@ -315,16 +315,16 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 28,
-    name: "GARUDA",
+    name: "BASILISCO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/29.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
+  },  
   {
     file: "targets.mind",
     index: 29,
-    name: "BASILISCO",
+    name: "ALICORNO",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Descubrí su historia y su secreto.",
     image: "./assets/mito/30.jpg",
@@ -333,74 +333,65 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 30,
-    name: "ALICORNO",
+    name: "SECRETO",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí su historia y su secreto.",
+    description: "¡Lo encontramos! Descubrí el secreto final.",
     image: "./assets/mito/31.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 31,
-    name: "SECRETO",
+    name: "MAPA MITOLÓGICO",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí el secreto final.",
+    description: "¡Lo encontramos! Viajemos juntos por el mundo.",
     image: "./assets/mito/32.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 32,
-    name: "MAPA MITOLÓGICO",
+    name: "¿SABÍAS ESTO?",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Viajemos juntos por el mundo.",
+    description: "¡Lo encontramos! Descubrí más de sus historias.",
     image: "./assets/mito/33.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 33,
-    name: "¿SABÍAS ESTO?",
+    name: "TICTAC",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí más de sus historias.",
+    description: "¡Lo encontramos! Cronometro Mitológico.",
     image: "./assets/mito/34.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 34,
-    name: "TICTAC",
+    name: "EL VIAJE MITOLÓGICO",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Cronometro Mitológico.",
+    description: "¡Lo encontramos! Viajemos jugando.",
     image: "./assets/mito/35.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 35,
-    name: "EL VIAJE MITOLÓGICO",
+    name: "DICCIONARIO",
     book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Viajemos jugando.",
+    description: "¡Lo encontramos! Descubrí significados de palabras.",
     image: "./assets/mito/36.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },  
   {
     file: "targets.mind",
     index: 36,
-    name: "DICCIONARIO",
-    book: "Colores Mitológicos",
-    description: "¡Lo encontramos! Descubrí significados de palabras.",
-    image: "./assets/mito/37.jpg",
-    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
-  },
-  {
-    file: "targets.mind",
-    index: 37,
     name: "MUSICA",
     book: "Colores Mitológicos",
     description: "¡Lo encontramos! Baila con nosotros.",
     image: "./assets/mito/37.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
-  
+ 
 ];
