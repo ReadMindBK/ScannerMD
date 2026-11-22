@@ -393,6 +393,14 @@ window.READMIND_TARGETS = [
     image: "./assets/mito/37.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   },
+  {
+    file: "targets.mind",
+    index: 37,
+    name: "MUSICA",
+    book: "Colores Mitológicos",
+    description: "¡Lo encontramos! Baila con nosotros.",
+    image: "./assets/mito/37.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  }
   
- 
 ];
