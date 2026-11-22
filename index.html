@@ -10,7 +10,6 @@
   <meta name="theme-color" content="#14253f">
   <meta name="description" content="Escáner interactivo de libros READMIND.">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="preload" as="image" href="./assets/header-scanner.png">
   <link rel="icon" href="./assets/icon.ico" type="image/x-icon">
   <title>READMIND | Escáner</title>
 
@@ -351,7 +350,10 @@ transform: translateY(15px);
   letter-spacing:3px;
   line-height:1;
   color:#fff;
-  text-shadow: 0 2px 5px #14253f99;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 7px #fff,
+    0 0 1px #fff;
 }
 
 .brand-subtitle {
@@ -428,10 +430,10 @@ transform: translateY(15px);
   height: 129px;
   min-height: 129px;
 
-  background-color: #914760;
-  background-image: url("./assets/header-scanner.png");
+  background-color: #ffffff;
+  background-image: url("./assets/header-scanner2.jpg");
   background-position: center top;
-  background-size: 563px 174px;
+  background-size: 563px 129px;
   background-repeat: no-repeat;
 }
 
@@ -784,61 +786,13 @@ body.is-scanning .camera-wrap .scan-book-title {
   cursor: pointer;
 }
 
-.install-close-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
+.install-close {
   margin-top: 14px;
-}
-
-/* POSICIÓN INDEPENDIENTE DE "AHORA NO" */
-.install-close {
-  margin: 0;
   border: 0;
   background: transparent;
   color: #637084;
   font-size: 14px;
   cursor: pointer;
-  transform: translateX(30px);
-}
-
-/* POSICIÓN INDEPENDIENTE DEL NÚMERO */
-.install-countdown {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #914760;
-  border-radius: 50%;
-  color: #914760;
-  font-size: 14px;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  transform: translateX(80px);
-}
-.install-close {
-  margin: 0;
-  border: 0;
-  background: transparent;
-  color: #637084;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.install-countdown {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #914760;
-  border-radius: 50%;
-  color: #914760;
-  font-size: 14px;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
 }
 
 
@@ -1100,16 +1054,6 @@ margin-bottom: 0;
 }
 .scan-visual [hidden] { display: none !important; }
 
-/* =====================================================
-   TAMAÑO DE LA TARJETA DE RECONOCIMIENTO (EDITABLE)
-   1.30 = 30% más grande. Cambiá este número para ajustar
-   el tamaño: 1.00 = original, 1.20 = 20% más grande.
-   El centrado se mantiene automáticamente.
-   ===================================================== */
-:root {
-  --result-card-scale: 1.30;
-}
-
 /* Al reconocer una imagen, desaparece camara-base.png y la tarjeta
    ocupa y centra su contenido dentro del mismo espacio visual. */
 .scan-visual.has-result {
@@ -1131,8 +1075,6 @@ margin-bottom: 0;
   max-width: 430px;
   margin: 0;
   padding: 16px;
-  transform: scale(var(--result-card-scale));
-  transform-origin: center center;
   border: 1px solid #e9e2d3;
   border-radius: 19px;
   background: #fffdf8;
@@ -1271,7 +1213,7 @@ body.is-scanning .camera-hint {
        ========================================================= -->
 <header class="app-header">
   <div class="header-content">
-    <div class="brand-title">SCANNER</div>
+    <div class="brand-title">SCANNER MIND</div>
     <div class="brand-subtitle">
       EXPLORA - DESCUBRE - APRENDE
     </div>
@@ -1365,12 +1307,9 @@ body.is-scanning .camera-hint {
       INSTALAR READMIND
     </button>
 
-    <div class="install-close-row">
-      <button class="install-close" id="installClose" type="button">
-        Ahora no
-      </button>
-      <span class="install-countdown" id="installCountdown" aria-live="off">5</span>
-    </div>
+    <button class="install-close" id="installClose">
+      Ahora no
+    </button>
   </div>
 </div>
 
@@ -1837,12 +1776,6 @@ startBtn.click();
 
   let deferredPrompt = null;
 
-  /* SEGUNDOS QUE PERMANECE EL AVISO DE INSTALACIÓN.
-     Cambiá 5 por la cantidad de segundos que quieras. */
-  const INSTALL_PROMPT_SECONDS = 5;
-  const countdown = document.querySelector("#installCountdown");
-  let countdownInterval = null;
-
   const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
@@ -1854,34 +1787,6 @@ startBtn.click();
 
   function closeInstall() {
     overlay.classList.remove("show");
-    if (countdownInterval !== null) {
-      clearInterval(countdownInterval);
-      countdownInterval = null;
-    }
-  }
-
-  function showInstallWithCountdown() {
-    if (isInstalled) return;
-
-    let secondsLeft = Math.max(0, Number(INSTALL_PROMPT_SECONDS) || 0);
-    countdown.textContent = secondsLeft;
-    overlay.classList.add("show");
-
-    if (countdownInterval !== null) {
-      clearInterval(countdownInterval);
-      countdownInterval = null;
-    }
-
-    if (secondsLeft === 0) {
-      closeInstall();
-      return;
-    }
-
-    countdownInterval = setInterval(() => {
-      secondsLeft -= 1;
-      countdown.textContent = Math.max(0, secondsLeft);
-      if (secondsLeft <= 0) closeInstall();
-    }, 1000);
   }
 
   if (isInstalled) return;
@@ -1942,10 +1847,13 @@ startBtn.click();
     installButton.hidden = true;
   });
 
-  // Mostrar la invitación al entrar a la página y cerrarla sola
-  // cuando termina la cuenta regresiva configurable.
+  // Mostrar la invitación al entrar a la página.
   window.addEventListener("load", () => {
-    setTimeout(showInstallWithCountdown, 800);
+    setTimeout(() => {
+      if (!isInstalled) {
+        overlay.classList.add("show");
+      }
+    }, 800);
   });
 
 })();
