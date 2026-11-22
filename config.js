@@ -63,7 +63,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 0,
-    name: "1",
+    name: "33",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/7.jpg",
@@ -72,7 +72,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 1,
-    name: "2",
+    name: "34",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/8.jpg",
@@ -81,7 +81,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 2,
-    name: "3",
+    name: "35",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/9.jpg",
@@ -90,7 +90,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 3,
-    name: "4",
+    name: "36",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/10.jpg",
@@ -99,7 +99,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 4,
-    name: "5",
+    name: "37",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/11.jpg",
@@ -108,7 +108,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 5,
-    name: "6",
+    name: "38",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/12.jpg",
@@ -117,7 +117,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 6,
-    name: "7",
+    name: "1",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/13.jpg",
@@ -126,7 +126,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 7,
-    name: "8",
+    name: "2",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/14.jpg",
@@ -135,7 +135,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 8,
-    name: "9",
+    name: "3",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/15.jpg",
@@ -144,7 +144,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 9,
-    name: "10",
+    name: "4",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/16.jpg",
@@ -153,7 +153,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 10,
-    name: "11",
+    name: "5",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/17.jpg",
@@ -162,7 +162,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 11,
-    name: "12",
+    name: "6",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/18.jpg",
@@ -171,7 +171,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 12,
-    name: "13",
+    name: "7",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/19.jpg",
@@ -180,7 +180,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 13,
-    name: "14",
+    name: "8",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/20.jpg",
@@ -189,7 +189,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 14,
-    name: "15",
+    name: "9",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/21.jpg",
@@ -198,7 +198,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 15,
-    name: "16",
+    name: "10",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/22.jpg",
@@ -207,7 +207,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 16,
-    name: "17",
+    name: "11",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/23.jpg",
@@ -216,7 +216,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 17,
-    name: "18",
+    name: "12",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/24.jpg",
@@ -225,7 +225,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 18,
-    name: "19",
+    name: "13",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/25.jpg",
@@ -234,7 +234,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 19,
-    name: "20",
+    name: "14",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/26.jpg",
@@ -243,7 +243,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 20,
-    name: "21",
+    name: "15",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/27.jpg",
@@ -252,7 +252,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 21,
-    name: "22",
+    name: "16",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/28.jpg",
@@ -261,7 +261,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 22,
-    name: "23",
+    name: "17",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/29.jpg",
@@ -270,7 +270,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 23,
-    name: "24",
+    name: "18",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/30.jpg",
@@ -279,7 +279,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 24,
-    name: "25",
+    name: "19",
     book: "Colores Mitológicos",
     description: "¡Encontramos a la Esfinge! Descubrí su historia y sus secretos.",
     image: "./assets/mito/31.jpg",
@@ -288,7 +288,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 25,
-    name: "26",
+    name: "20",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/1.jpg",
@@ -297,7 +297,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 26,
-    name: "27",
+    name: "21",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/2.jpg",
@@ -306,7 +306,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 27,
-    name: "28",
+    name: "22",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/3.jpg",
@@ -315,7 +315,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 28,
-    name: "29",
+    name: "23",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/4.jpg",
@@ -324,7 +324,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 29,
-    name: "30",
+    name: "24",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/5.jpg",
@@ -333,7 +333,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 30,
-    name: "31",
+    name: "25",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -342,7 +342,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 31,
-    name: "32",
+    name: "26",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -351,7 +351,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 32,
-    name: "33",
+    name: "27",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -360,7 +360,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 33,
-    name: "34",
+    name: "28",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -369,7 +369,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 34,
-    name: "35",
+    name: "29",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -378,7 +378,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 35,
-    name: "36",
+    name: "30",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -387,7 +387,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 36,
-    name: "37",
+    name: "31",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
@@ -396,7 +396,7 @@ window.READMIND_TARGETS = [
   {
     file: "targets.mind",
     index: 37,
-    name: "38",
+    name: "32",
     book: "Colores Mitológicos",
     description: "¡Encontramos a Anubis! Descubrí su historia y sus secretos.",
     image: "./assets/mito/6.jpg",
