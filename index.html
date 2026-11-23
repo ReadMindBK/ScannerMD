@@ -1941,4 +1941,71 @@ startBtn.click();
   window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
     closeInstall();
-  }
+  });
+
+  closeButton.addEventListener("click", closeInstall);
+
+  installButton.addEventListener("click", async () => {
+
+    // Android y navegadores compatibles.
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+
+      const result = await deferredPrompt.userChoice;
+
+      if (result.outcome === "accepted") {
+        closeInstall();
+      }
+
+      deferredPrompt = null;
+      return;
+    }
+
+    // iPhone y iPad.
+    if (isIOS) {
+      message.textContent =
+        "Para instalar READMIND, tocá el botón Compartir de Safari y después elegí «Agregar a pantalla de inicio».";
+
+      installButton.hidden = true;
+      return;
+    }
+
+    // Android cuando el navegador no ofrece el aviso automático.
+    if (isAndroid) {
+      message.textContent =
+        "Abrí el menú de Chrome (⋮), buscá «Instalar aplicación» o «Agregar a pantalla principal» y confirmá la instalación.";
+
+      installButton.hidden = true;
+      return;
+    }
+
+    message.textContent =
+      "Abrí READMIND desde el navegador de tu celular para instalar la aplicación.";
+
+    installButton.hidden = true;
+  });
+
+  // Mostrar la invitación al entrar a la página y cerrarla sola
+  // cuando termina la cuenta regresiva configurable.
+  window.addEventListener("load", () => {
+    setTimeout(showInstallWithCountdown, 800);
+  });
+
+})();
+</script>
+
+
+<script>
+  // DIRECCIÓN DEL BOTÓN W DEL PIE DE PÁGINA: reemplazá el texto por tu URL.
+  const FOOTER_URL = "https://readmindbk.github.io/WEB/";
+  document.querySelector("#footerWebButton").addEventListener("click", () => {
+    if (!FOOTER_URL || FOOTER_URL === "PEGAR_AQUI_TU_URL") {
+      alert("Todavía falta configurar la dirección web en FOOTER_URL, al final de index.html.");
+      return;
+    }
+    window.open(FOOTER_URL, "_blank", "noopener,noreferrer");
+  });
+</script>
+
+</body>
+</html>
