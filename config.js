@@ -392,6 +392,340 @@ window.READMIND_TARGETS = [
     description: "¡Lo encontramos! Baila con nosotros.",
     image: "./assets/mito/37.jpg",
     url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 37,
+    name: "SPHINX",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/38.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 38,
+    name: "ANUBIS",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/39.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 39,
+    name: "MANTICORE",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/40.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 40,
+    name: "CERBERUS",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/41.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 41,
+    name: "PHOENIX",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/42.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 42,
+    name: "MEDUSA",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/43.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 43,
+    name: "HYDRA",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/44.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 44,
+    name: "MINOTAUR",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/45.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 45,
+    name: "CHIMERA",
+    book: "Mythological Colors",
+    description:"We found it! Discover its history and its secret.",
+    image: "./assets/mito/46.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 46,
+    name: "CYCLOPS",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/47.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 47,
+    name: "DRAGON",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/48.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 48,
+    name: "WEREWOLF",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/49.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 49,
+    name: "VAMPIRE",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/50.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 50,
+    name: "GARGOYLE",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/51.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 51,
+    name: "FAUN",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/52.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 52,
+    name: "JÖRMUNGARDR",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/53.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 53,
+    name: "KRAKEN",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/54.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 54,
+    name: "DULLAHAN",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/55.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 55,
+    name: "BANSHEE",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/56.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 56,
+    name: "SELKI",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/57.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 57,
+    name: "TIAMAT",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/58.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 58,
+    name: "WENDIGO",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/59.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 59,
+    name: "YETI",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/60.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 60,
+    name: "KITSUNE",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/61.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 61,
+    name: "KAPPA",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/62.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 62,
+    name: "ONI",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/63.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 63,
+    name: "CHUPACABRA",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/64.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 64,
+    name: "GARUDA",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/65.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },
+  {
+    file: "targets.mind",
+    index: 65,
+    name: "BASILISK",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/66.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 66,
+    name: "ALICORN",
+    book: "Mythological Colors",
+    description: "We found it! Discover its history and its secret.",
+    image: "./assets/mito/67.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 67,
+    name: "SECRET",
+    book: "Mythological Colors",
+    description: "We found it! I discovered the final secret.",
+    image: "./assets/mito/68.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 68,
+    name: "MYTHOLOGICAL MAP",
+    book: "Mythological Colors",
+    description: "We found it! Let’s travel the world together.",
+    image: "./assets/mito/69.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 69,
+    name: "DID YOU KNOW THIS?",
+    book: "Mythological Colors",
+    description: "We found it! Discover more of their stories.",
+    image: "./assets/mito/70.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 70,
+    name: "TICTAC",
+    book: "Mythological Colors",
+    description: "We found it! Mythological Chronometer.",
+    image: "./assets/mito/71.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 71,
+    name: "THE MYTHOLOGICAL JOURNEY",
+    book: "Mythological Colors",
+    description: "We found it! Let’s travel while we play.",
+    image: "./assets/mito/72.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 72,
+    name: "DICTIONARY",
+    book: "Mythological Colors",
+    description: "We found it! Discover the meanings of words.",
+    image: "./assets/mito/73.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
+  },  
+  {
+    file: "targets.mind",
+    index: 73,
+    name: "MUSIC",
+    book: "Mythological Colors",
+    description: "We found it! Dance with us.",
+    image: "./assets/mito/74.jpg",
+    url: "https://readmindbk.github.io/Mythological_Colors_Synopsis"
   }
+ 
  
 ];
