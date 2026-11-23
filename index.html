@@ -172,11 +172,17 @@ transform: translateY(15px);
     .primary {
 /* AGRANDAR LA FLECHA DE DESCUBRIR CONTENIDO */
 #openBtn {
-  font-size: 18px;
+  font-size: 14px;
+}
+#openBtn .discover-arrow {
+  display: inline-block;
+  font-size: 25px;
+  margin-left: 5px;
+  vertical-align: -2px;
 }
 
 #openBtn::first-letter {
-  font-size: 18px;
+  font-size: 14px;
 }
       width: 100%;
       border: 0;
@@ -1286,7 +1292,9 @@ body.is-scanning .camera-hint {
             <p class="description" id="resultDescription"></p>
           </div>
         </div>
-        <button class="primary" id="openBtn">DESCUBRIR CONTENIDO →</button>
+<button class="primary" id="openBtn">
+  DESCUBRIR CONTENIDO <span class="discover-arrow">→</span>
+</button>
       </section>
       </div>
     </section>
