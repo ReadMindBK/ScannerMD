@@ -1246,6 +1246,17 @@ body.is-scanning .camera-hint {
       white-space: normal;
     }
 
+    /* Cuenta regresiva junto al mensaje BUSCANDO IMAGEN. */
+    .scan-countdown {
+      display: inline-block;
+      margin-left: 5px;
+      color: #ffffff;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 1px 4px #000;
+    }
+    .scan-countdown[hidden] { display: none !important; }
+
   </style>
 </head>
 
@@ -1403,6 +1414,46 @@ body.is-scanning .camera-hint {
     const againBtn = document.querySelector("#againBtn");
     const guide = document.querySelector("#guide");
     const hint = document.querySelector("#cameraHint");
+    const SCAN_TIMEOUT_SECONDS = 10; // Cambiá 10 para modificar el tiempo.
+    let scanCountdownInterval = null;
+    let scanSecondsLeft = SCAN_TIMEOUT_SECONDS;
+    const scanCountdown = document.createElement("span");
+    scanCountdown.id = "scanCountdown";
+    scanCountdown.className = "scan-countdown";
+    scanCountdown.setAttribute("aria-live", "off");
+
+    function setHintText(message) {
+      hint.textContent = message + " ";
+      hint.appendChild(scanCountdown);
+    }
+
+    function stopScanCountdown() {
+      if (scanCountdownInterval !== null) {
+        clearInterval(scanCountdownInterval);
+        scanCountdownInterval = null;
+      }
+      scanCountdown.hidden = true;
+    }
+
+    function startScanCountdown() {
+      stopScanCountdown();
+      scanSecondsLeft = SCAN_TIMEOUT_SECONDS;
+      scanCountdown.textContent = `(${scanSecondsLeft})`;
+      scanCountdown.hidden = false;
+      scanCountdownInterval = setInterval(() => {
+        if (!scanning || recognized) {
+          stopScanCountdown();
+          return;
+        }
+        scanSecondsLeft -= 1;
+        scanCountdown.textContent = `(${Math.max(0, scanSecondsLeft)})`;
+        if (scanSecondsLeft <= 0) {
+          stopScanCountdown();
+          backBtn.click();
+        }
+      }, 1000);
+    }
+
     const hintHome = hint.parentNode;
     const hintHomeNext = hint.nextSibling;
     const frame = guide.querySelector(".frame");
@@ -1605,7 +1656,8 @@ function showError(message) {
       result.classList.add("show");
       scanVisual.classList.add("has-result");
       guide.style.display = "none";
-      hint.textContent = "¡Imagen reconocida!";
+      stopScanCountdown();
+      setHintText("¡Imagen reconocida!");
       status.textContent = "¡Lo encontramos!";
       cameraWrap.classList.remove("scanning");
       document.body.classList.remove("is-scanning");
@@ -1630,7 +1682,8 @@ function showError(message) {
 
       const fileName = selectedBook.file;
       status.textContent = "Buscando imagen…";
-      hint.textContent = "Buscando imagen";
+      setHintText("Buscando imagen");
+      scanCountdown.hidden = true;
 
       try {
         const { scene, system } = await createSceneForFile(fileName, groupIndex);
@@ -1649,7 +1702,10 @@ function showError(message) {
         if (!scanning || recognized || token !== cycleToken) return;
 
         status.textContent = "Buscando imagen…";
-        hint.textContent = "Buscando imagen";
+        setHintText("Buscando imagen");
+        if (scanning && !recognized && token === cycleToken) {
+          startScanCountdown();
+        }
       } catch (error) {
         console.error("Error al cargar", fileName, error);
         if (!scanning || recognized || token !== cycleToken) return;
@@ -1695,6 +1751,7 @@ skipNextScanSound = false;
 // Mostrar el nombre del libro debajo del logo.
 scanBookTitle.textContent = selectedBook.name || "";
 
+      stopScanCountdown();
       scanning = true;
       cycleToken++;
       const token = cycleToken;
@@ -1707,7 +1764,7 @@ scanBookTitle.textContent = selectedBook.name || "";
       cameraWrap.classList.add("scanning");
       document.body.classList.add("is-scanning");
       status.textContent = "Preparando cámara…";
-      hint.textContent = "Buscando imagen";
+      setHintText("Buscando imagen");
       await startGroup(0, token);
       startBtn.disabled = false;
     });
@@ -1746,6 +1803,7 @@ scanBookTitle.textContent = selectedBook.name || "";
 
     backBtn.addEventListener("click", async () => {
       playSound(soundBack);
+      stopScanCountdown();
       scanning = false;
       recognized = false;
       cycleToken++;
@@ -1760,7 +1818,8 @@ scanBookTitle.textContent = selectedBook.name || "";
       startBtn.disabled = false;
       againBtn.hidden = true;
       status.textContent = selectedBook ? `Libro: ${selectedBook.name}` : "Seleccioná un libro para comenzar.";
-      hint.textContent = "Colocá la imagen dentro del marco";
+      stopScanCountdown();
+      setHintText("Colocá la imagen dentro del marco");
     });
 
     /* =========================================================
@@ -1882,71 +1941,4 @@ startBtn.click();
   window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
     closeInstall();
-  });
-
-  closeButton.addEventListener("click", closeInstall);
-
-  installButton.addEventListener("click", async () => {
-
-    // Android y navegadores compatibles.
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-
-      const result = await deferredPrompt.userChoice;
-
-      if (result.outcome === "accepted") {
-        closeInstall();
-      }
-
-      deferredPrompt = null;
-      return;
-    }
-
-    // iPhone y iPad.
-    if (isIOS) {
-      message.textContent =
-        "Para instalar READMIND, tocá el botón Compartir de Safari y después elegí «Agregar a pantalla de inicio».";
-
-      installButton.hidden = true;
-      return;
-    }
-
-    // Android cuando el navegador no ofrece el aviso automático.
-    if (isAndroid) {
-      message.textContent =
-        "Abrí el menú de Chrome (⋮), buscá «Instalar aplicación» o «Agregar a pantalla principal» y confirmá la instalación.";
-
-      installButton.hidden = true;
-      return;
-    }
-
-    message.textContent =
-      "Abrí READMIND desde el navegador de tu celular para instalar la aplicación.";
-
-    installButton.hidden = true;
-  });
-
-  // Mostrar la invitación al entrar a la página y cerrarla sola
-  // cuando termina la cuenta regresiva configurable.
-  window.addEventListener("load", () => {
-    setTimeout(showInstallWithCountdown, 800);
-  });
-
-})();
-</script>
-
-
-<script>
-  // DIRECCIÓN DEL BOTÓN W DEL PIE DE PÁGINA: reemplazá el texto por tu URL.
-  const FOOTER_URL = "https://readmindbk.github.io/WEB/";
-  document.querySelector("#footerWebButton").addEventListener("click", () => {
-    if (!FOOTER_URL || FOOTER_URL === "PEGAR_AQUI_TU_URL") {
-      alert("Todavía falta configurar la dirección web en FOOTER_URL, al final de index.html.");
-      return;
-    }
-    window.open(FOOTER_URL, "_blank", "noopener,noreferrer");
-  });
-</script>
-
-</body>
-</html>
+  }
