@@ -1265,40 +1265,54 @@ body.is-scanning .camera-hint {
     }
     .scan-countdown[hidden] { display: none !important; }
 
-/* ENCABEZADO CON PANEL BLANCO DETRÁS DE LA IMAGEN */
+/* =========================================================
+   PANEL BLANCO ÚNICO Y ADAPTABLE
+   Este es el único fondo blanco del área central.
+   Ancho: se adapta a la pantalla hasta el máximo indicado.
+   Alto: crece con el contenido y cubre como mínimo la pantalla.
+   ========================================================= */
+:root {
+  --panel-ancho: 563px;       /* Ancho máximo del panel */
+  --panel-solape-superior: 50px; /* Cuánto sube detrás del encabezado */
+}
+
+/* El encabezado conserva su imagen, pero ya no crea otro recuadro blanco. */
 .app-header {
   position: relative;
+  z-index: 2;
   width: 100%;
   height: 174px;
   min-height: 174px;
   padding: 0;
-
-  /* MEDIDAS EDITABLES DEL RECUADRO BLANCO */
-  --panel-ancho: 563px;
-  --panel-alto: 50px;
-
-  background-color: #6b3047 !important;
-
-  /* Primera capa: imagen.
-     Segunda capa: rectángulo blanco detrás de la imagen. */
-  background-image:
-    url("./assets/header-scanner.png"),
-    linear-gradient(#ffffff, #ffffff);
-
-  background-position:
-    center top,
-    center bottom;
-
-  background-size:
-    563px 174px,
-    min(var(--panel-ancho), 100%) var(--panel-alto);
-
+  background-color: transparent !important;
+  background-image: url("./assets/header-scanner.png");
+  background-position: center top;
+  background-size: 563px 174px;
   background-repeat: no-repeat;
-
   box-shadow: none;
 }
 
-/* Mantiene los textos por encima del rectángulo */
+/* Un solo panel: empieza 50px antes, por detrás de la parte inferior
+   transparente del encabezado, y continúa por todo el contenido. */
+body > main {
+  position: relative;
+  z-index: 1;
+  width: min(var(--panel-ancho), calc(100% - 32px));
+  max-width: var(--panel-ancho);
+  margin-top: calc(-1 * var(--panel-solape-superior));
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-top: calc(22px + var(--panel-solape-superior));
+  padding-bottom: 10px !important;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: max(0px, calc(100dvh - 359px));
+  display: block;
+  box-sizing: border-box;
+  background: #ffffff !important;
+}
+
+/* El texto del título mantiene su color blanco. */
 .app-header .header-content {
   z-index: 2;
 }
