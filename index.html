@@ -1297,16 +1297,22 @@ body.is-scanning .camera-hint {
 body > main {
   position: relative;
   z-index: 1;
-  width: min(var(--panel-ancho), calc(100% - 32px));
+
+  /* MISMO ANCHO QUE EL ENCABEZADO Y EL FOOTER */
+  width: min(var(--panel-ancho), 100%);
   max-width: var(--panel-ancho);
+
   margin-top: calc(-1 * var(--panel-solape-superior));
   margin-left: auto !important;
   margin-right: auto !important;
+
   padding-top: calc(22px + var(--panel-solape-superior));
   padding-bottom: 10px !important;
   padding-left: 0;
   padding-right: 0;
+
   min-height: max(0px, calc(100dvh - 359px));
+
   display: block;
   box-sizing: border-box;
   background: #ffffff !important;
