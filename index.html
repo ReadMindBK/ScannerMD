@@ -1322,6 +1322,43 @@ body > main {
   color: #ffffff !important;
 }
 
+/* =====================================================
+   ENCABEZADOS: PRINCIPAL Y MODO ESCANEO
+   ===================================================== */
+
+/* Mientras la cámara está activa, ocultar el encabezado principal */
+body.is-scanning > .app-header {
+  display: none !important;
+}
+
+/* Durante el escaneo, mostrar únicamente el encabezado 2 */
+body.is-scanning .camera-wrap .scan-header {
+  display: block !important;
+  width: 100% !important;
+  height: 174px !important;
+  min-height: 174px !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+
+  background-color: transparent !important;
+  background-image: url("./assets/header-scanner2.jpg") !important;
+  background-position: center top !important;
+  background-size: min(563px, 100%) auto !important;
+  background-repeat: no-repeat !important;
+
+  box-shadow: none !important;
+}
+
+/* Cuando no se está escaneando, ocultar el encabezado 2 */
+body:not(.is-scanning) .scan-header {
+  display: none !important;
+}
+
+/* Ocultar el botón WEB mientras la cámara está activa */
+body.is-scanning .footer-web-button {
+  display: none !important;
+}
+
   </style>
 </head>
 
