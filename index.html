@@ -916,6 +916,7 @@ margin-bottom: 0;
       #914760 100%
     ) !important;
 
+
   background-position:
     center var(--footer-bajar),
     center center !important;
@@ -926,9 +927,21 @@ margin-bottom: 0;
 
   background-repeat: no-repeat !important;
 
-  overflow: hidden !important;
+overflow: visible !important;
 }
 
+/* Extensión bordó debajo del footer */
+.page-footer::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 49.9%;
+  transform: translateX(-50%);
+  width: min(100vw, 563px);
+  height: 60px;
+  background-color: #6b3047;
+  pointer-events: none;
+}
 .page-footer img {
   display: none !important;
 }
