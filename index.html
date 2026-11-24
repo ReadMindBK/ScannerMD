@@ -431,7 +431,7 @@ transform: translateY(15px);
   background-color: #914760;
   background-image: url("./assets/header-scanner.png");
   background-position: center top;
-  background-size: 563px 174px;
+  background-size: 563px 129px;
   background-repeat: no-repeat;
 }
 
@@ -1323,38 +1323,81 @@ body > main {
 }
 
 /* =====================================================
-   ENCABEZADOS: PRINCIPAL Y MODO ESCANEO
+   ENCABEZADO 2: CONFIGURACIÓN DEFINITIVA
    ===================================================== */
 
-/* Mientras la cámara está activa, ocultar el encabezado principal */
+/* Ocultar el encabezado principal durante el escaneo */
 body.is-scanning > .app-header {
   display: none !important;
 }
 
-/* Durante el escaneo, mostrar únicamente el encabezado 2 */
-body.is-scanning .camera-wrap .scan-header {
-  display: block !important;
-  width: 100% !important;
-  height: 174px !important;
-  min-height: 174px !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
+/* Configuración visual del encabezado 2 */
+.scan-header {
+  display: none;
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 129px;
+  min-height: 129px;
 
-  background-color: transparent !important;
-  background-image: url("./assets/header-scanner2.jpg") !important;
-  background-position: center top !important;
-  background-size: min(563px, 100%) auto !important;
-  background-repeat: no-repeat !important;
-
-  box-shadow: none !important;
+  background-color: #914760;
+  background-image: url("./assets/header-scanner.png");
+  background-position: center top;
+  background-size: 563px 174px;
+  background-repeat: no-repeat;
 }
 
-/* Cuando no se está escaneando, ocultar el encabezado 2 */
+/* Mostrar el encabezado 2 únicamente durante el escaneo */
+body.is-scanning .camera-wrap .scan-header {
+  display: block !important;
+}
+
+/* =====================================================
+   POSICIÓN DEL TÍTULO Y SUBTÍTULO DEL ENCABEZADO 2
+   ===================================================== */
+
+/* Posición vertical del conjunto de textos */
+.scan-header .header-content {
+  position: absolute !important;
+  top: 50px !important; /* SUBIR O BAJAR AMBOS TEXTOS */
+  left: 0 !important;
+  width: 100% !important;
+  text-align: center !important;
+  z-index: 10002 !important;
+}
+
+/* TÍTULO: SCANNER MIND */
+.scan-header .brand-title {
+  display: block !important;
+  position: relative !important;
+  top: 0px; /* SUBIR O BAJAR SOLO EL TÍTULO */
+}
+
+/* SUBTÍTULO: EXPLORA - DESCUBRE - APRENDE */
+.scan-header .brand-subtitle {
+  display: block !important;
+  position: relative !important;
+  top: 0px; /* SUBIR O BAJAR SOLO EL SUBTÍTULO */
+  margin-top: 2px !important;
+}
+
+/* El marco de la cámara comienza debajo del encabezado */
+.camera-wrap.scanning .camera-guide {
+  position: absolute !important;
+  top: 174px !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+
+/* Ocultar el encabezado 2 cuando no se escanea */
 body:not(.is-scanning) .scan-header {
   display: none !important;
 }
 
-/* Ocultar el botón WEB mientras la cámara está activa */
+/* Ocultar el botón WEB durante el escaneo */
 body.is-scanning .footer-web-button {
   display: none !important;
 }
