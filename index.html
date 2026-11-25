@@ -955,17 +955,25 @@ overflow: visible !important;
    BOTÓN WEB: IMAGEN CON POSICIÓN Y TAMAÑO FIJOS
    ===================================================== */
 
+/* =====================================================
+   BOTÓN WEB: ALINEACIÓN RESPONSIVE CON @readmindbk
+   ===================================================== */
+
 .footer-web-button {
   position: absolute;
 
-  /* Posición alineada con el diseño de 563 px */
-  top: calc(var(--footer-bajar) + 45px);
-  right: max(8px, calc((100% - 450px) / 2 + 8px));
-  transform: translateY(-50%);
+  /* POSICIÓN VERTICAL */
+  top: calc(var(--footer-bajar) + 60px);
 
-  /* Tamaño fijo */
-  width: 45px;
-  height: 45px;
+  /* POSICIÓN HORIZONTAL PROPORCIONAL */
+  left: 84%;
+  right: auto;
+
+  transform: translate(-50%, -50%);
+
+  /* TAMAÑO DEL BOTÓN */
+  width: 55px;
+  height: 55px;
   min-width: 42px;
   min-height: 42px;
 
@@ -981,6 +989,17 @@ overflow: visible !important;
   z-index: 2;
   -webkit-tap-highlight-color: transparent;
 }
+
+.footer-web-button img {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+
 
 .footer-web-button img {
   display: block !important;
