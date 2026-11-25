@@ -955,25 +955,31 @@ overflow: visible !important;
    BOTÓN WEB: IMAGEN CON POSICIÓN Y TAMAÑO FIJOS
    ===================================================== */
 
-/* =====================================================
-   BOTÓN WEB: ALINEACIÓN RESPONSIVE CON @readmindbk
-   ===================================================== */
+/* CONTENEDOR CENTRADO SOBRE LA IMAGEN DEL FOOTER */
+.footer-inner {
+  position: absolute;
+  top: var(--footer-bajar);
+  left: 50%;
+  transform: translateX(-50%);
 
+  width: min(100vw, 563px);
+  aspect-ratio: 1047 / 277;
+
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* BOTÓN WEB ALINEADO CON @READMINDBK */
 .footer-web-button {
   position: absolute;
 
-  /* POSICIÓN VERTICAL */
-  top: calc(var(--footer-bajar) + 60px);
-
-  /* POSICIÓN HORIZONTAL PROPORCIONAL */
-  left: 84%;
-  right: auto;
+  left: 91.6%;
+  top: 39.5%;
 
   transform: translate(-50%, -50%);
 
-  /* TAMAÑO DEL BOTÓN */
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
   min-width: 42px;
   min-height: 42px;
 
@@ -986,7 +992,9 @@ overflow: visible !important;
   justify-content: center;
 
   cursor: pointer;
-  z-index: 2;
+  pointer-events: auto;
+  z-index: 5;
+
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -1508,13 +1516,16 @@ body.is-scanning .footer-web-button {
     <div class="error" id="errorBox" role="alert"></div>
     </div>
   </main>
-  <footer class="page-footer" aria-label="Pie de página READMIND">
-    <img class="footer-art" src="./assets/footer-bar.png" alt="READMIND, redes sociales y nuestro sitio web">
-<button class="footer-web-button" id="footerWebButton"
-        type="button" aria-label="Visitar nuestro sitio web">
-  <img src="./assets/boton-web.png" alt="">
-</button>
-  </footer>
+<footer class="page-footer" aria-label="Pie de página READMIND">
+
+  <div class="footer-inner">
+    <button class="footer-web-button" id="footerWebButton"
+            type="button" aria-label="Visitar nuestro sitio web">
+      <img src="./assets/boton-web.png" alt="">
+    </button>
+  </div>
+
+</footer>
 
 <!-- ===== INVITACIÓN PARA INSTALAR READMIND ===== -->
 
