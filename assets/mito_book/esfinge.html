@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>READMIND</title>
+
+  <style>
+    /* ESTILOS GENERALES */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* TARJETA PRINCIPAL */
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      border-radius: 22px;
+      padding: 16px;
+      animation: fade .6s ease;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* PORTADA */
+.cover {
+  width: 115%;
+  max-width: none;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+  align-self: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+    /* BOTÓN ESCUCHAR */
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    button {
+      width: 200px;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: #2f80ed;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: scale(.96);
+    }
+
+    /* BARRA DE PROGRESO */
+    #progress {
+      width: 80%;
+      display: block;
+      margin: 18px auto 0 auto;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(
+        to right,
+        #2f80ed 0%,
+        #2f80ed 0%,
+        #e0e0e0 0%,
+        #e0e0e0 100%
+      );
+      outline: none;
+      border-radius: 4px;
+    }
+
+    #progress::-webkit-slider-runnable-track {
+      width: 80%;
+      height: 6px;
+      background: transparent;
+      border-radius: 4px;
+    }
+
+    #progress::-moz-range-track {
+      width: 80%;
+      height: 6px;
+      background: transparent;
+      border-radius: 4px;
+    }
+
+    #progress::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #2f80ed;
+      cursor: pointer;
+      margin-top: -5px;
+    }
+
+    #progress::-moz-range-thumb {
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #2f80ed;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* TIEMPO DEL AUDIO */
+    #time {
+      text-align: center;
+      color: #666;
+      margin-top: 8px;
+    }
+/* SECCIÓN DEL CÓDIGO */
+.codigo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 42px;
+}
+
+/* TEXTO CODIGO */
+.titulo-codigo {
+  color: #2f80ed;
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* CÍRCULO AZUL */
+.circulo-codigo {
+  width: 168px;
+  height: 168px;
+  border: 22px solid #2f80ed;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* LETRA CENTRAL */
+.letra-codigo {
+  color: #e9666b;
+  font-size: 76px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+/* MOSTRAR LETRA */
+.letra-codigo.visible {
+  opacity: 1;
+  visibility: visible;
+}
+    /* BOTÓN VOLVER */
+    .boton-volver {
+      margin-top: 65px;
+      margin-bottom: 12px;
+      background: #984d6a;
+      width: 136px;
+      border-radius: 11px;
+      font-size: 16px;
+      padding: 13px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- PORTADA -->
+<img class="cover" src="CM_portada1.png" alt="Portada">
+
+    <!-- BOTÓN ESCUCHAR -->
+    <div class="controls">
+      <button id="play">▶ Escuchar</button>
+    </div>
+
+    <!-- BARRA DE PROGRESO -->
+    <input id="progress" type="range" min="0" max="100" value="0">
+
+    <!-- TIEMPO -->
+    <div id="time">00:00 / 00:00</div>
+
+    <!-- AUDIO -->
+    <audio id="audio">
+<source src="CM_audio1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SECCIÓN CODIGO -->
+    <div class="codigo" id="seccionCodigo">
+
+      <h2 class="titulo-codigo">CODIGO</h2>
+
+      <div class="circulo-codigo">
+        <span class="letra-codigo" id="letraCodigo">N</span>
+      </div>
+
+    </div>
+
+    <!-- BOTÓN VOLVER -->
+    <button class="boton-volver" id="volver">
+      VOLVER
+    </button>
+
+  </div>
+
+  <script>
+
+    // =====================================
+    // CONFIGURACIÓN PERSONALIZABLE
+    // =====================================
+
+    // Segundo exacto del audio en que aparece el código
+    const TIEMPO_CODIGO = "01:44";
+
+    // Letra que aparece dentro del círculo
+    const LETRA_CODIGO = "N";
+
+    // Página a la que regresa si no hay historial anterior
+    const URL_VOLVER = "index.html";
+
+
+    // =====================================
+    // ELEMENTOS DE LA PÁGINA
+    // =====================================
+
+    const a = document.getElementById('audio');
+    const p = document.getElementById('play');
+    const r = document.getElementById('progress');
+    const t = document.getElementById('time');
+
+    const seccionCodigo = document.getElementById('seccionCodigo');
+    const letraCodigo = document.getElementById('letraCodigo');
+
+    const botonVolver = document.getElementById('volver');
+
+
+    // =====================================
+    // CONFIGURAR LETRA
+    // =====================================
+
+    letraCodigo.textContent = LETRA_CODIGO;
+
+
+    // =====================================
+    // ACTUALIZAR BARRA DE PROGRESO
+    // =====================================
+
+    function updateProgress() {
+
+      const value = r.value;
+
+      r.style.background = `linear-gradient(
+        to right,
+        #2f80ed 0%,
+        #2f80ed ${value}%,
+        #e0e0e0 ${value}%,
+        #e0e0e0 100%
+      )`;
+
+    }
+
+
+    // =====================================
+    // FORMATO DEL TIEMPO
+    // =====================================
+
+    function f(s) {
+
+      if (!isFinite(s)) return "00:00";
+
+      let m = Math.floor(s / 60);
+      let x = Math.floor(s % 60);
+
+      return String(m).padStart(2, '0') + ':' +
+             String(x).padStart(2, '0');
+
+    }
+
+
+    // =====================================
+    // MOSTRAR CODIGO EN EL MOMENTO INDICADO
+    // =====================================
+
+function actualizarCodigo() {
+
+  const partes = TIEMPO_CODIGO.split(":");
+  const segundoCodigo = Number(partes[0]) * 60 + Number(partes[1]);
+
+  if (a.currentTime >= segundoCodigo) {
+
+    letraCodigo.classList.add('visible');
+
+  } else {
+
+    letraCodigo.classList.remove('visible');
+
+  }
+
+}
+
+    // =====================================
+    // BOTÓN ESCUCHAR / PAUSA
+    // =====================================
+
+    p.onclick = () => {
+
+      if (a.paused) {
+
+        a.play();
+
+        p.textContent = '⏸ Pausa';
+
+        p.animate(
+          [
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.08)' },
+            { transform: 'scale(1)' }
+          ],
+          { duration: 250 }
+        );
+
+      } else {
+
+        a.pause();
+
+        p.textContent = '▶ Escuchar';
+
+      }
+
+    };
+
+
+    // =====================================
+    // ACTUALIZACIÓN DEL AUDIO
+    // =====================================
+
+    a.ontimeupdate = () => {
+
+      r.value = (a.currentTime / (a.duration || 1)) * 100;
+
+      updateProgress();
+
+      t.textContent = f(a.currentTime) + ' / ' + f(a.duration);
+
+      actualizarCodigo();
+
+    };
+
+
+    // =====================================
+    // ADELANTAR O RETROCEDER AUDIO
+    // =====================================
+
+    r.oninput = () => {
+
+      a.currentTime = (r.value / 100) * (a.duration || 0);
+
+      updateProgress();
+
+      actualizarCodigo();
+
+    };
+
+
+    // Actualizar al terminar una búsqueda en el audio
+    a.onseeked = actualizarCodigo;
+
+
+    // =====================================
+    // CUANDO TERMINA EL AUDIO
+    // =====================================
+
+    a.onended = () => {
+
+      p.textContent = '▶ Escuchar';
+
+    };
+
+
+// =====================================
+// BOTÓN VOLVER A SCANNER MIND
+// =====================================
+
+botonVolver.onclick = () => {
+
+  window.parent.postMessage(
+    { type: "READMIND_CLOSE_CONTENT" },
+    "*"
+  );
+
+};
+
+  </script>
+
+</body>
+</html>
