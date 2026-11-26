@@ -1543,6 +1543,26 @@ main.content-open .scan-area { display: none !important; }
   #contentScreen .content-cover { max-height: 46vh; }
 }
 
+
+/* =========================================================
+   37. PÁGINA COMPLETA DEL PERSONAJE
+   Oculta toda la aplicación mientras se muestra el contenido.
+   ========================================================= */
+
+#readmindContentFrame {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
   </style>
 </head>
 
@@ -1676,6 +1696,14 @@ main.content-open .scan-area { display: none !important; }
   </div>
 </div>
 
+<!-- ===== PÁGINA COMPLETA DEL PERSONAJE ===== -->
+
+<iframe
+  id="readmindContentFrame"
+  title="Contenido READMIND"
+  allow="autoplay"
+></iframe>
+
 <!-- ===== SONIDOS DEL ESCÁNER READMIND ===== -->
 
 <audio id="soundBook" preload="auto">
@@ -1780,6 +1808,7 @@ main.content-open .scan-area { display: none !important; }
     const openBtn = document.querySelector("#openBtn");
     const backBtn = document.querySelector("#backBtn");
     const contentScreen = document.querySelector("#contentScreen");
+    const contentFrame = document.querySelector("#readmindContentFrame");
     const contentTitle = document.querySelector("#contentTitle");
     const contentCover = document.querySelector("#contentCover");
     const contentAudioArea = document.querySelector("#contentAudioArea");
@@ -2245,7 +2274,26 @@ startBtn.click();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    openBtn.addEventListener("click", openTargetContent);
+/* =========================================================
+   ABRIR LA PÁGINA COMPLETA DEL PERSONAJE
+   ========================================================= */
+
+openBtn.addEventListener("click", () => {
+  if (!selectedTarget) return;
+
+  playSound(soundDiscover);
+
+  if (!selectedTarget.page) {
+    showError("La página de este personaje todavía no está configurada.");
+    return;
+  }
+
+  // Cargar el HTML completo del personaje.
+  contentFrame.src = selectedTarget.page;
+
+  // Cubrir toda la aplicación.
+  contentFrame.style.display = "block";
+});
 
     contentPlayButton.addEventListener("click", () => {
       if (!contentAudio.src) return;
@@ -2307,6 +2355,20 @@ startBtn.click();
         );
       });
     }
+
+ /* =========================================================
+       CERRAR LA PÁGINA DEL PERSONAJE Y VOLVER AL RECONOCIMIENTO
+       ========================================================= */
+
+    window.addEventListener("message", (event) => {
+      if (event.source !== contentFrame.contentWindow) return;
+
+      if (event.data?.type === "READMIND_CLOSE_CONTENT") {
+        contentFrame.style.display = "none";
+        contentFrame.src = "about:blank";
+      }
+    });
+
   })();
 
   </script>
