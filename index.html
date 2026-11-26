@@ -1435,6 +1435,114 @@ body.is-scanning .footer-web-button {
   display: none !important;
 }
 
+  
+
+/* =========================================================
+   35. PANTALLA DE CONTENIDO INTERNO — PERSONAJES CON AUDIO
+   ========================================================= */
+main.content-open .scan-area { display: none !important; }
+#contentScreen {
+  display: none;
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #fffdf8;
+  box-shadow: 0 5px 18px #14253f18;
+  text-align: center;
+}
+#contentScreen.show { display: block; animation: rise .35s ease-out; }
+#contentScreen .content-title {
+  margin: 0 0 14px;
+  color: #914760;
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 5vw, 28px);
+}
+#contentScreen .content-cover {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  max-height: 52vh;
+  margin: 0 auto 16px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+#contentScreen .content-audio-button {
+  display: block;
+  width: min(200px, 100%);
+  min-height: 48px;
+  margin: 0 auto 15px;
+  border: 0;
+  border-radius: 14px;
+  background: #2f80ed;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+#contentScreen .content-progress {
+  display: block;
+  width: 100%;
+  margin: 0 auto 8px;
+  accent-color: #2f80ed;
+  cursor: pointer;
+}
+#contentScreen .content-time {
+  margin: 0;
+  color: #637084;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+#contentScreen .content-code {
+  margin: 28px auto 0;
+}
+#contentScreen .content-code-title {
+  margin: 0 0 12px;
+  color: #2f80ed;
+  font-size: 25px;
+  font-weight: 800;
+}
+#contentScreen .content-code-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 168px;
+  margin: 0 auto;
+  border: 22px solid #2f80ed;
+  border-radius: 50%;
+  background: #fff;
+}
+#contentScreen .content-code-letter {
+  color: #e9666b;
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 1;
+}
+#contentScreen .content-back {
+  display: block;
+  width: 136px;
+  min-height: 46px;
+  margin: 32px auto 0;
+  border: 0;
+  border-radius: 12px;
+  background: #984d6a;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+#contentScreen .content-pending {
+  margin: 20px 0;
+  color: #637084;
+  font-size: 15px;
+  line-height: 1.5;
+}
+@media (max-width: 390px) {
+  #contentScreen { padding: 13px; }
+  #contentScreen .content-cover { max-height: 46vh; }
+}
+
   </style>
 </head>
 
@@ -1515,6 +1623,24 @@ body.is-scanning .footer-web-button {
     </section>
     <div class="error" id="errorBox" role="alert"></div>
     </div>
+
+    <!-- CONTENIDO DEL PERSONAJE: permanece dentro de SCANNER MIND -->
+    <section id="contentScreen" aria-live="polite">
+      <h2 class="content-title" id="contentTitle"></h2>
+      <img class="content-cover" id="contentCover" src="" alt="" hidden>
+      <div id="contentAudioArea" hidden>
+        <button class="content-audio-button" id="contentPlayButton" type="button">▶ REPRODUCIR</button>
+        <input class="content-progress" id="contentProgress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progreso del audio">
+        <p class="content-time" id="contentTime">0:00 / 0:00</p>
+        <audio id="contentAudio" preload="metadata"></audio>
+        <div class="content-code" id="contentCode" hidden>
+          <h3 class="content-code-title">¡TU CÓDIGO!</h3>
+          <div class="content-code-circle"><span class="content-code-letter" id="contentCodeLetter"></span></div>
+        </div>
+      </div>
+      <p class="content-pending" id="contentPending" hidden></p>
+      <button class="content-back" id="contentBackButton" type="button">VOLVER</button>
+    </section>
   </main>
 <footer class="page-footer" aria-label="Pie de página READMIND">
 
@@ -1653,6 +1779,18 @@ body.is-scanning .footer-web-button {
     const errorBox = document.querySelector("#errorBox");
     const openBtn = document.querySelector("#openBtn");
     const backBtn = document.querySelector("#backBtn");
+    const contentScreen = document.querySelector("#contentScreen");
+    const contentTitle = document.querySelector("#contentTitle");
+    const contentCover = document.querySelector("#contentCover");
+    const contentAudioArea = document.querySelector("#contentAudioArea");
+    const contentAudio = document.querySelector("#contentAudio");
+    const contentPlayButton = document.querySelector("#contentPlayButton");
+    const contentProgress = document.querySelector("#contentProgress");
+    const contentTime = document.querySelector("#contentTime");
+    const contentCode = document.querySelector("#contentCode");
+    const contentCodeLetter = document.querySelector("#contentCodeLetter");
+    const contentPending = document.querySelector("#contentPending");
+    const contentBackButton = document.querySelector("#contentBackButton");
     const bookOptions = document.querySelector("#bookOptions");
     const scanBookLogo = document.querySelector("#scanBookLogo");
     const scanBookLogoImage = document.querySelector("#scanBookLogoImage");
@@ -2021,18 +2159,140 @@ startBtn.click();
     });
 
     /* =========================================================
-       29. BOTÓN DESCUBRIR CONTENIDO
-       Abre la página web definida en el campo url de config.js.
+       29. CONTENIDO INTERNO DEL PERSONAJE
+       El contenido se muestra dentro de SCANNER MIND.
+       Cada personaje puede configurar portada, audio, codeTime
+       y codeLetter desde config.js.
        ========================================================= */
-    openBtn.addEventListener("click", () => {
+    function formatAudioTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) seconds = 0;
+      const minutes = Math.floor(seconds / 60);
+      const remaining = Math.floor(seconds % 60);
+      return `${minutes}:${String(remaining).padStart(2, "0")}`;
+    }
+
+    function getCodeSeconds(value) {
+      if (typeof value === "number") return value;
+      if (typeof value !== "string" || !value.trim()) return NaN;
+      const parts = value.trim().split(":").map(Number);
+      if (parts.some(part => !Number.isFinite(part) || part < 0)) return NaN;
+      if (parts.length === 2) return parts[0] * 60 + parts[1];
+      if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+      return NaN;
+    }
+
+    function updateContentCode() {
+      const revealAt = getCodeSeconds(selectedTarget && selectedTarget.codeTime);
+      const hasLetter = selectedTarget && selectedTarget.codeLetter;
+      const shouldReveal = Number.isFinite(revealAt) && hasLetter && contentAudio.currentTime >= revealAt;
+      contentCode.hidden = !shouldReveal;
+    }
+
+    function updateContentProgress() {
+      const duration = contentAudio.duration;
+      const current = contentAudio.currentTime || 0;
+      if (Number.isFinite(duration) && duration > 0) {
+        contentProgress.value = String((current / duration) * 100);
+      } else {
+        contentProgress.value = "0";
+      }
+      contentTime.textContent = `${formatAudioTime(current)} / ${formatAudioTime(duration)}`;
+      updateContentCode();
+    }
+
+    function openTargetContent() {
       if (!selectedTarget) return;
       playSound(soundDiscover);
-      const url = selectedTarget.url;
-      if (!url || url.startsWith("REEMPLAZAR_")) {
-        showError("Todavía falta configurar la dirección web de este personaje. Editá su campo url en config.js.");
-        return;
+      contentTitle.textContent = selectedTarget.name || "READMIND";
+      contentCover.hidden = true;
+      contentAudioArea.hidden = true;
+      contentPending.hidden = true;
+      contentCode.hidden = true;
+      contentAudio.pause();
+      contentAudio.removeAttribute("src");
+      contentAudio.load();
+      contentPlayButton.textContent = "▶ REPRODUCIR";
+      contentProgress.value = "0";
+      contentTime.textContent = "0:00 / 0:00";
+
+      if (selectedTarget.cover) {
+        contentCover.src = selectedTarget.cover;
+        contentCover.alt = selectedTarget.name || "Portada";
+        contentCover.hidden = false;
+        contentCover.onerror = () => {
+          contentCover.hidden = true;
+          contentPending.textContent = "No se pudo cargar la portada. Revisá la ruta del archivo en config.js.";
+          contentPending.hidden = false;
+        };
       }
-      window.location.href = url;
+
+      if (selectedTarget.audio) {
+        contentAudioArea.hidden = false;
+        contentCodeLetter.textContent = selectedTarget.codeLetter || "";
+        contentAudio.src = selectedTarget.audio;
+        contentAudio.load();
+        contentAudio.onerror = () => {
+          contentPending.textContent = "No se pudo cargar el audio. Revisá que el archivo exista en assets/mito_book/.";
+          contentPending.hidden = false;
+        };
+      } else {
+        contentPending.textContent = "Estamos preparando este contenido. Próximamente estará disponible dentro de SCANNER MIND.";
+        contentPending.hidden = false;
+      }
+
+      document.querySelector("main").classList.add("content-open");
+      contentScreen.classList.add("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    openBtn.addEventListener("click", openTargetContent);
+
+    contentPlayButton.addEventListener("click", () => {
+      if (!contentAudio.src) return;
+      if (contentAudio.paused) {
+        contentAudio.play().then(() => {
+          contentPlayButton.textContent = "❚❚ PAUSAR";
+        }).catch(error => {
+          console.warn("No se pudo reproducir el audio del personaje:", error);
+          contentPending.textContent = "No se pudo reproducir el audio. Comprobá el archivo y volvé a intentarlo.";
+          contentPending.hidden = false;
+        });
+      } else {
+        contentAudio.pause();
+        contentPlayButton.textContent = "▶ REPRODUCIR";
+      }
+    });
+
+    contentAudio.addEventListener("loadedmetadata", updateContentProgress);
+    contentAudio.addEventListener("timeupdate", updateContentProgress);
+    contentAudio.addEventListener("play", () => {
+      contentPlayButton.textContent = "❚❚ PAUSAR";
+    });
+    contentAudio.addEventListener("pause", () => {
+      contentPlayButton.textContent = "▶ REPRODUCIR";
+    });
+    contentAudio.addEventListener("ended", () => {
+      contentPlayButton.textContent = "▶ REPRODUCIR";
+      updateContentProgress();
+    });
+
+    contentProgress.addEventListener("input", () => {
+      if (!Number.isFinite(contentAudio.duration) || contentAudio.duration <= 0) return;
+      contentAudio.currentTime = (Number(contentProgress.value) / 100) * contentAudio.duration;
+      updateContentProgress();
+    });
+
+    contentBackButton.addEventListener("click", () => {
+      contentAudio.pause();
+      contentAudio.currentTime = 0;
+      contentAudio.load();
+      contentPlayButton.textContent = "▶ REPRODUCIR";
+      contentProgress.value = "0";
+      contentTime.textContent = "0:00 / 0:00";
+      contentCode.hidden = true;
+      contentScreen.classList.remove("show");
+      document.querySelector("main").classList.remove("content-open");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     /* =========================================================
