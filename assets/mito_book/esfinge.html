@@ -7,7 +7,9 @@
   <title>READMIND</title>
 
   <style>
+
     /* ESTILOS GENERALES */
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -20,6 +22,7 @@
     }
 
     /* TARJETA PRINCIPAL */
+
     .card {
       width: 100%;
       max-width: 480px;
@@ -34,11 +37,18 @@
     }
 
     @keyframes fade {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* PORTADA */
+
     .cover {
       width: 115%;
       max-width: none;
@@ -46,41 +56,48 @@
       border-radius: 18px;
       display: block;
       align-self: center;
-      margin-left: 0;
-      margin-right: 0;
     }
 
-    /* BOTÓN ESCUCHAR */
+    /* BOTONES */
+
     .controls {
       display: flex;
       justify-content: center;
-      gap: 10px;
       margin-top: 18px;
       width: 100%;
     }
 
     button {
+      border: none;
+      outline: none;
+      box-shadow: none;
+      -webkit-tap-highlight-color: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    button:focus,
+    button:focus-visible,
+    button:active {
+      outline: none;
+      box-shadow: none;
+    }
+
+    #play {
       width: 200px;
       padding: 14px;
-      border: none;
       border-radius: 14px;
       background: #2f80ed;
       color: white;
       font-weight: bold;
       font-size: 16px;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-    }
-
-    button:active {
-      transform: scale(.96);
     }
 
     /* SECCIÓN CÓDIGO */
+
     .codigo {
       display: flex;
       flex-direction: column;
@@ -89,58 +106,110 @@
     }
 
     /* CONTENEDOR CIRCULAR */
+
     .contenedor-circular {
       position: relative;
-      width: 200px;
-      height: 200px;
-      margin-top: 30px;
+      width: 240px;
+      height: 240px;
+      margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* SVG DEL PROGRESO */
+    /* SVG CIRCULAR */
+
     .progreso-circular {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
+      width: 200px;
+      height: 200px;
+      top: 20px;
+      left: 20px;
       overflow: visible;
-      touch-action: none;
-      cursor: pointer;
+      pointer-events: none;
     }
 
     /* SURCO GRIS */
+
     .progreso-fondo {
       fill: none;
       stroke: #D9D9D9;
-      stroke-width: 7;
+      stroke-width: 12;
       stroke-linecap: round;
     }
 
     /* LÍNEA NARANJA */
+
     .progreso-linea {
       fill: none;
       stroke: #F5A623;
-      stroke-width: 7;
+      stroke-width: 13;
       stroke-linecap: round;
-      stroke-dasharray: 565.49;
+
+      stroke-dasharray: 100 100;
       stroke-dashoffset: 0;
+
       transition: stroke-dashoffset 0.08s linear;
-      pointer-events: none;
     }
 
-    /* ZONA INVISIBLE PARA TOCAR */
-    .zona-interactiva {
-      fill: none;
-      stroke: transparent;
-      stroke-width: 30;
-      pointer-events: stroke;
-      cursor: pointer;
+    /* CUATRO PUNTOS DE NAVEGACIÓN */
+
+    .punto-audio {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      min-height: 18px;
+      padding: 0;
+      border-radius: 50%;
+      background: #F5A623;
+      z-index: 5;
+      transition: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .punto-audio:focus,
+    .punto-audio:focus-visible,
+    .punto-audio:active {
+      outline: none;
+      box-shadow: none;
+      background: #F5A623;
+    }
+
+    /* PUNTO SUPERIOR: 0% */
+
+    #puntoInicio {
+      top: 21px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* PUNTO IZQUIERDO: 25% */
+
+    #punto25 {
+      left: 21px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* PUNTO INFERIOR: 50% */
+
+    #punto50 {
+      bottom: 21px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* PUNTO DERECHO: 75% */
+
+    #punto75 {
+      right: 21px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     /* CÍRCULO AZUL */
+
     .circulo-codigo {
       width: 168px;
       height: 168px;
@@ -157,6 +226,7 @@
     }
 
     /* INTERROGANTE */
+
     .interrogante-codigo {
       color: #888888;
       font-size: 76px;
@@ -168,6 +238,7 @@
     }
 
     /* LETRA CENTRAL */
+
     .letra-codigo {
       color: #F5A623;
       font-size: 76px;
@@ -190,10 +261,12 @@
     }
 
     /* BOTÓN VOLVER */
+
     .boton-volver {
       margin-top: 65px;
       margin-bottom: 12px;
       background: #984d6a;
+      color: white;
       width: 136px;
       border-radius: 11px;
       font-size: 16px;
@@ -208,69 +281,98 @@
   <div class="card">
 
     <!-- PORTADA -->
+
     <img class="cover" src="CM_portada1.png" alt="Portada">
 
     <!-- BOTÓN ESCUCHAR -->
+
     <div class="controls">
-      <button id="play">▶ Escuchar</button>
+      <button id="play" type="button">▶ Escuchar</button>
     </div>
 
     <!-- AUDIO -->
-    <audio id="audio">
+
+    <audio id="audio" preload="metadata">
       <source src="CM_audio1.mp3" type="audio/mpeg">
     </audio>
 
     <!-- SECCIÓN CÓDIGO -->
+
     <div class="codigo">
 
       <div class="contenedor-circular">
 
+        <!-- SURCO Y PROGRESO -->
+
         <svg
           class="progreso-circular"
-          id="controlCircular"
           viewBox="0 0 200 200"
         >
 
           <!-- SURCO GRIS PERMANENTE -->
-          <circle
+
+          <path
             class="progreso-fondo"
-            cx="100"
-            cy="100"
-            r="90"
-            id="surcoCircular"
+d="M 100 10
+   A 90 90 0 0 1 100 190
+   A 90 90 0 0 1 100 10"
+            pathLength="100"
           />
 
-          <!-- LÍNEA NARANJA DE PROGRESO -->
-          <circle
+          <!-- LÍNEA NARANJA -->
+
+          <path
             class="progreso-linea"
             id="progresoCircular"
-            cx="100"
-            cy="100"
-            r="90"
-          />
-
-          <!-- ZONA INVISIBLE INTERACTIVA -->
-          <circle
-            class="zona-interactiva"
-            cx="100"
-            cy="100"
-            r="90"
+d="M 100 10
+   A 90 90 0 0 1 100 190
+   A 90 90 0 0 1 100 10"
+            pathLength="100"
           />
 
         </svg>
 
+        <!-- CUATRO PUNTOS INTERACTIVOS -->
+
+        <button
+          class="punto-audio"
+          id="puntoInicio"
+          type="button"
+          aria-label="Inicio del audio">
+        </button>
+
+        <button
+          class="punto-audio"
+          id="punto25"
+          type="button"
+          aria-label="25 por ciento del audio">
+        </button>
+
+        <button
+          class="punto-audio"
+          id="punto50"
+          type="button"
+          aria-label="50 por ciento del audio">
+        </button>
+
+        <button
+          class="punto-audio"
+          id="punto75"
+          type="button"
+          aria-label="75 por ciento del audio">
+        </button>
+
         <!-- CÍRCULO AZUL -->
+
         <div class="circulo-codigo">
 
           <span
             class="interrogante-codigo"
-            id="interroganteCodigo"
-          >?</span>
+            id="interroganteCodigo">?</span>
 
           <span
             class="letra-codigo"
-            id="letraCodigo"
-          >N</span>
+            id="letraCodigo">N</span>
 
         </div>
 
@@ -279,7 +381,8 @@
     </div>
 
     <!-- BOTÓN VOLVER -->
-    <button class="boton-volver" id="volver">
+
+    <button class="boton-volver" id="volver" type="button">
       VOLVER
     </button>
 
@@ -292,38 +395,51 @@
     // CONFIGURACIÓN PERSONALIZABLE
     // =====================================
 
-    // Segundo exacto en que aparece el código
+    // Tiempo exacto en que aparece el código
+
     const TIEMPO_CODIGO = "01:44";
 
     // Letra que aparece
+
     const LETRA_CODIGO = "N";
 
-    // COLOR DE LA LÍNEA NARANJA
+    // COLOR DE LA LÍNEA Y LOS PUNTOS
+
     const COLOR_PROGRESO = "#F5A623";
 
-    // COLOR DEL SURCO INFERIOR
+// COLOR DE LOS CUATRO PUNTOS
+const COLOR_PUNTOS = "#F5A623";
+
+    // COLOR DEL SURCO
+
     const COLOR_SURCO = "#D9D9D9";
 
     // GROSOR DE LA LÍNEA NARANJA
-    const GROSOR_LINEA = 15;
+
+    const GROSOR_LINEA = 12;
 
     // GROSOR DEL SURCO GRIS
+
     const GROSOR_SURCO = 12;
 
-    // GROSOR DE LA ZONA TÁCTIL INVISIBLE
-    // Cuanto mayor sea, más fácil será tocar el círculo
-    const GROSOR_ZONA_TACTIL = 20;
-
     // TAMAÑO DEL INTERROGANTE
-    const TAMANO_INTERROGANTE = 90;
+
+    const TAMANO_INTERROGANTE = 76;
 
     // TAMAÑO DE LA LETRA
+
     const TAMANO_LETRA = 76;
 
     // COLOR DEL INTERROGANTE
+
     const COLOR_INTERROGANTE = "#888888";
 
+    // TAMAÑO DE LOS CUATRO PUNTOS
+
+    const TAMANO_PUNTOS = 24;
+
     // URL DE REGRESO
+
     const URL_VOLVER = "index.html";
 
 
@@ -332,17 +448,20 @@
     // =====================================
 
     const a = document.getElementById('audio');
+
     const p = document.getElementById('play');
 
-    const letraCodigo = document.getElementById('letraCodigo');
-    const interroganteCodigo = document.getElementById('interroganteCodigo');
+    const letraCodigo =
+      document.getElementById('letraCodigo');
 
-    const progresoCircular = document.getElementById('progresoCircular');
-    const surcoCircular = document.getElementById('surcoCircular');
+    const interroganteCodigo =
+      document.getElementById('interroganteCodigo');
 
-    const controlCircular = document.getElementById('controlCircular');
+    const progresoCircular =
+      document.getElementById('progresoCircular');
 
-    const botonVolver = document.getElementById('volver');
+    const botonVolver =
+      document.getElementById('volver');
 
 
     // =====================================
@@ -355,25 +474,42 @@
     letraCodigo.style.fontSize = TAMANO_LETRA + "px";
 
     interroganteCodigo.style.color = COLOR_INTERROGANTE;
-    interroganteCodigo.style.fontSize = TAMANO_INTERROGANTE + "px";
+
+    interroganteCodigo.style.fontSize =
+      TAMANO_INTERROGANTE + "px";
 
     progresoCircular.style.stroke = COLOR_PROGRESO;
-    progresoCircular.style.strokeWidth = GROSOR_LINEA;
 
-    surcoCircular.style.stroke = COLOR_SURCO;
-    surcoCircular.style.strokeWidth = GROSOR_SURCO;
+progresoCircular.style.strokeWidth = GROSOR_LINEA + "px";
 
-    controlCircular.querySelector('.zona-interactiva')
-      .style.strokeWidth = GROSOR_ZONA_TACTIL;
+    document.querySelectorAll('.progreso-fondo').forEach(elemento => {
+
+      elemento.style.stroke = COLOR_SURCO;
+      elemento.style.strokeWidth = GROSOR_SURCO + "px";
+
+    });
+
+document.querySelectorAll('.punto-audio').forEach(elemento => {
+
+  elemento.style.background = COLOR_PUNTOS;
+
+  elemento.style.width = TAMANO_PUNTOS + "px";
+  elemento.style.height = TAMANO_PUNTOS + "px";
+
+  elemento.style.minWidth = TAMANO_PUNTOS + "px";
+  elemento.style.minHeight = TAMANO_PUNTOS + "px";
+
+});
 
 
     // =====================================
-    // CONFIGURAR CIRCUNFERENCIA
+    // CONFIGURAR PROGRESO CIRCULAR
     // =====================================
 
-    const CIRCUNFERENCIA = 2 * Math.PI * 90;
+    const CIRCUNFERENCIA = 100;
 
-    progresoCircular.style.strokeDasharray = CIRCUNFERENCIA;
+    progresoCircular.style.strokeDasharray = "100 100";
+
     progresoCircular.style.strokeDashoffset = 0;
 
 
@@ -386,8 +522,11 @@
       const duracion = a.duration || 0;
 
       if (!duracion || !isFinite(duracion)) {
+
         progresoCircular.style.strokeDashoffset = 0;
+
         return;
+
       }
 
       const porcentaje = Math.min(
@@ -395,8 +534,8 @@
         1
       );
 
-      // La línea naranja se acorta mientras
-      // avanza el audio.
+      // La línea naranja se acorta
+      // siguiendo el recorrido de la trayectoria.
 
       const restante = CIRCUNFERENCIA * porcentaje;
 
@@ -406,7 +545,7 @@
 
 
     // =====================================
-    // ACTUALIZAR LETRA E INTERROGANTE
+    // MOSTRAR LETRA O INTERROGANTE
     // =====================================
 
     function actualizarCodigo() {
@@ -420,11 +559,13 @@
       if (a.currentTime >= segundoCodigo) {
 
         letraCodigo.classList.add('visible');
+
         interroganteCodigo.classList.add('oculto');
 
       } else {
 
         letraCodigo.classList.remove('visible');
+
         interroganteCodigo.classList.remove('oculto');
 
       }
@@ -433,91 +574,83 @@
 
 
     // =====================================
-    // ACTUALIZAR TODA LA INTERFAZ
+    // ACTUALIZAR INTERFAZ
     // =====================================
 
     function actualizarInterfaz() {
 
       actualizarProgreso();
+
       actualizarCodigo();
 
     }
 
 
     // =====================================
-    // TOCAR EL CÍRCULO PARA MOVER EL AUDIO
+    // NAVEGACIÓN POR LOS CUATRO PUNTOS
     // =====================================
 
-    function buscarAudioDesdeToque(event) {
+    function irA(porcentaje) {
 
       if (!isFinite(a.duration) || a.duration <= 0) {
+
         return;
+
       }
 
-      const rect = controlCircular.getBoundingClientRect();
-
-      // Coordenadas del toque respecto al centro
-      const x = event.clientX - rect.left - rect.width / 2;
-      const y = event.clientY - rect.top - rect.height / 2;
-
-      // Calcular el ángulo
-      let angulo = Math.atan2(y, x);
-
-      // Convertir a grados
-      let grados = angulo * 180 / Math.PI;
-
-      // El inicio del audio está arriba
-      grados = (grados + 90 + 360) % 360;
-
-      // Convertir ángulo a porcentaje
-      const porcentaje = grados / 360;
-
       // Cambiar posición del audio
-      a.currentTime = porcentaje * a.duration;
 
-      // Actualizar visualmente
+      a.currentTime = a.duration * porcentaje;
+
+      // Actualizar línea y código
+
       actualizarInterfaz();
 
     }
 
 
     // =====================================
-    // INTERACCIÓN CON LÍNEA Y SURCO
+    // PUNTO SUPERIOR: INICIO
     // =====================================
 
-    let arrastrando = false;
+    document.getElementById('puntoInicio').onclick = () => {
 
-    controlCircular.addEventListener('pointerdown', (event) => {
+      irA(0);
 
-      arrastrando = true;
+    };
 
-      controlCircular.setPointerCapture(event.pointerId);
 
-      buscarAudioDesdeToque(event);
+    // =====================================
+    // PUNTO IZQUIERDO: 25%
+    // =====================================
 
-    });
+    document.getElementById('punto25').onclick = () => {
 
-    controlCircular.addEventListener('pointermove', (event) => {
+      irA(0.25);
 
-      if (arrastrando) {
+    };
 
-        buscarAudioDesdeToque(event);
 
-      }
+    // =====================================
+    // PUNTO INFERIOR: 50%
+    // =====================================
 
-    });
+    document.getElementById('punto50').onclick = () => {
 
-    controlCircular.addEventListener('pointerup', () => {
+      irA(0.50);
 
-      arrastrando = false;
+    };
 
-    });
 
-    controlCircular.addEventListener('pointercancel', () => {
+    // =====================================
+    // PUNTO DERECHO: 75%
+    // =====================================
 
-      arrastrando = false;
+    document.getElementById('punto75').onclick = () => {
 
-    });
+      irA(0.75);
+
+    };
 
 
     // =====================================
@@ -530,24 +663,24 @@
 
         a.play();
 
-        p.textContent = '⏸ Pausa';
-
-        p.animate(
-          [
-            { transform: 'scale(1)' },
-            { transform: 'scale(1.08)' },
-            { transform: 'scale(1)' }
-          ],
-          { duration: 250 }
-        );
-
       } else {
 
         a.pause();
 
-        p.textContent = '▶ Escuchar';
-
       }
+
+    };
+
+
+    a.onplay = () => {
+
+      p.textContent = '⏸ Pausa';
+
+    };
+
+    a.onpause = () => {
+
+      p.textContent = '▶ Escuchar';
 
     };
 
@@ -562,15 +695,14 @@
 
     };
 
-
     a.onloadedmetadata = () => {
 
       actualizarInterfaz();
 
     };
 
-
     a.onseeking = actualizarInterfaz;
+
     a.onseeked = actualizarInterfaz;
 
 
