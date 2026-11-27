@@ -180,7 +180,7 @@ personajesES.forEach((nombre, i) => {
   if (i === 1) {
     objetivo.cover = "./assets/mito_book/CM_portada2.png";
     objetivo.audio = "./assets/mito_book/CM_audio2.mp3";
-    objetivo.codeTime = "1:44";
+    objetivo.codeTime = "0:58";
     objetivo.codeLetter = "E";
     objetivo.page = "./assets/mito_book/CM2.html";
   }
