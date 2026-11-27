@@ -168,13 +168,21 @@ personajesES.forEach((nombre, i) => {
     url: urlContenido
   };
 
- /* DATOS DE AUDIO, PORTADA Y PÁGINA DE LA ESFINGE */
+ /* DATOS DE AUDIO XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
   if (i === 0) {
     objetivo.cover = "./assets/mito_book/CM_portada1.png";
     objetivo.audio = "./assets/mito_book/CM_audio1.mp3";
     objetivo.codeTime = "1:44";
     objetivo.codeLetter = "N";
-    objetivo.page = "./assets/mito_book/esfinge.html";
+    objetivo.page = "./assets/mito_book/CM1.html";
+  }
+
+  if (i === 1) {
+    objetivo.cover = "./assets/mito_book/CM_portada2.png";
+    objetivo.audio = "./assets/mito_book/CM_audio2.mp3";
+    objetivo.codeTime = "1:44";
+    objetivo.codeLetter = "E";
+    objetivo.page = "./assets/mito_book/CM2.html";
   }
 
   objetivos.push(objetivo);
