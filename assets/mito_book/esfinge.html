@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,16 +39,16 @@
     }
 
     /* PORTADA */
-.cover {
-  width: 115%;
-  max-width: none;
-  height: auto;
-  border-radius: 18px;
-  display: block;
-  align-self: center;
-  margin-left: 0;
-  margin-right: 0;
-}
+    .cover {
+      width: 115%;
+      max-width: none;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+      align-self: center;
+      margin-left: 0;
+      margin-right: 0;
+    }
 
     /* BOTÓN ESCUCHAR */
     .controls {
@@ -79,102 +80,115 @@
       transform: scale(.96);
     }
 
-    /* BARRA DE PROGRESO */
-    #progress {
-      width: 80%;
-      display: block;
-      margin: 18px auto 0 auto;
-      -webkit-appearance: none;
-      appearance: none;
-      background: linear-gradient(
-        to right,
-        #2f80ed 0%,
-        #2f80ed 0%,
-        #e0e0e0 0%,
-        #e0e0e0 100%
-      );
-      outline: none;
-      border-radius: 4px;
+    /* SECCIÓN CÓDIGO */
+    .codigo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
     }
 
-    #progress::-webkit-slider-runnable-track {
-      width: 80%;
-      height: 6px;
-      background: transparent;
-      border-radius: 4px;
+    /* CONTENEDOR CIRCULAR */
+    .contenedor-circular {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    #progress::-moz-range-track {
-      width: 80%;
-      height: 6px;
-      background: transparent;
-      border-radius: 4px;
-    }
-
-    #progress::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      background: #2f80ed;
-      cursor: pointer;
-      margin-top: -5px;
-    }
-
-    #progress::-moz-range-thumb {
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      background: #2f80ed;
-      border: none;
+    /* SVG DEL PROGRESO */
+    .progreso-circular {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+      overflow: visible;
+      touch-action: none;
       cursor: pointer;
     }
 
-    /* TIEMPO DEL AUDIO */
-    #time {
-      text-align: center;
-      color: #666;
-      margin-top: 8px;
+    /* SURCO GRIS */
+    .progreso-fondo {
+      fill: none;
+      stroke: #D9D9D9;
+      stroke-width: 7;
+      stroke-linecap: round;
     }
-/* SECCIÓN DEL CÓDIGO */
-.codigo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top:10px;
-}
 
+    /* LÍNEA NARANJA */
+    .progreso-linea {
+      fill: none;
+      stroke: #F5A623;
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-dasharray: 565.49;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.08s linear;
+      pointer-events: none;
+    }
 
-/* CÍRCULO AZUL */
-.circulo-codigo {
-  width: 168px;
-  height: 168px;
-  border: 22px solid #2f80ed;
-  border-radius: 50%;
-  box-sizing: border-box;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-}
+    /* ZONA INVISIBLE PARA TOCAR */
+    .zona-interactiva {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 30;
+      pointer-events: stroke;
+      cursor: pointer;
+    }
 
-/* LETRA CENTRAL */
-.letra-codigo {
-  color: #e9666b;
-  font-size: 76px;
-  font-weight: 900;
-  line-height: 1;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease;
-}
+    /* CÍRCULO AZUL */
+    .circulo-codigo {
+      width: 168px;
+      height: 168px;
+      border: 22px solid #2f80ed;
+      border-radius: 50%;
+      box-sizing: border-box;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
 
-/* MOSTRAR LETRA */
-.letra-codigo.visible {
-  opacity: 1;
-  visibility: visible;
-}
+    /* INTERROGANTE */
+    .interrogante-codigo {
+      color: #888888;
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease;
+    }
+
+    /* LETRA CENTRAL */
+    .letra-codigo {
+      color: #F5A623;
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      transition: opacity 0.3s ease;
+    }
+
+    .letra-codigo.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .interrogante-codigo.oculto {
+      opacity: 0;
+      visibility: hidden;
+    }
+
     /* BOTÓN VOLVER */
     .boton-volver {
       margin-top: 65px;
@@ -194,31 +208,72 @@
   <div class="card">
 
     <!-- PORTADA -->
-<img class="cover" src="CM_portada1.png" alt="Portada">
+    <img class="cover" src="CM_portada1.png" alt="Portada">
 
     <!-- BOTÓN ESCUCHAR -->
     <div class="controls">
       <button id="play">▶ Escuchar</button>
     </div>
 
-    <!-- BARRA DE PROGRESO -->
-    <input id="progress" type="range" min="0" max="100" value="0">
-
-    <!-- TIEMPO -->
-    <div id="time">00:00 / 00:00</div>
-
     <!-- AUDIO -->
     <audio id="audio">
-<source src="CM_audio1.mp3" type="audio/mpeg">
+      <source src="CM_audio1.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SECCIÓN CODIGO -->
+    <!-- SECCIÓN CÓDIGO -->
+    <div class="codigo">
 
+      <div class="contenedor-circular">
 
+        <svg
+          class="progreso-circular"
+          id="controlCircular"
+          viewBox="0 0 200 200"
+        >
 
+          <!-- SURCO GRIS PERMANENTE -->
+          <circle
+            class="progreso-fondo"
+            cx="100"
+            cy="100"
+            r="90"
+            id="surcoCircular"
+          />
 
-      <div class="circulo-codigo">
-        <span class="letra-codigo" id="letraCodigo">N</span>
+          <!-- LÍNEA NARANJA DE PROGRESO -->
+          <circle
+            class="progreso-linea"
+            id="progresoCircular"
+            cx="100"
+            cy="100"
+            r="90"
+          />
+
+          <!-- ZONA INVISIBLE INTERACTIVA -->
+          <circle
+            class="zona-interactiva"
+            cx="100"
+            cy="100"
+            r="90"
+          />
+
+        </svg>
+
+        <!-- CÍRCULO AZUL -->
+        <div class="circulo-codigo">
+
+          <span
+            class="interrogante-codigo"
+            id="interroganteCodigo"
+          >?</span>
+
+          <span
+            class="letra-codigo"
+            id="letraCodigo"
+          >N</span>
+
+        </div>
+
       </div>
 
     </div>
@@ -230,100 +285,240 @@
 
   </div>
 
+
   <script>
 
     // =====================================
     // CONFIGURACIÓN PERSONALIZABLE
     // =====================================
 
-    // Segundo exacto del audio en que aparece el código
+    // Segundo exacto en que aparece el código
     const TIEMPO_CODIGO = "01:44";
 
-    // Letra que aparece dentro del círculo
+    // Letra que aparece
     const LETRA_CODIGO = "N";
 
-    // Página a la que regresa si no hay historial anterior
+    // COLOR DE LA LÍNEA NARANJA
+    const COLOR_PROGRESO = "#F5A623";
+
+    // COLOR DEL SURCO INFERIOR
+    const COLOR_SURCO = "#D9D9D9";
+
+    // GROSOR DE LA LÍNEA NARANJA
+    const GROSOR_LINEA = 15;
+
+    // GROSOR DEL SURCO GRIS
+    const GROSOR_SURCO = 12;
+
+    // GROSOR DE LA ZONA TÁCTIL INVISIBLE
+    // Cuanto mayor sea, más fácil será tocar el círculo
+    const GROSOR_ZONA_TACTIL = 20;
+
+    // TAMAÑO DEL INTERROGANTE
+    const TAMANO_INTERROGANTE = 90;
+
+    // TAMAÑO DE LA LETRA
+    const TAMANO_LETRA = 76;
+
+    // COLOR DEL INTERROGANTE
+    const COLOR_INTERROGANTE = "#888888";
+
+    // URL DE REGRESO
     const URL_VOLVER = "index.html";
 
 
     // =====================================
-    // ELEMENTOS DE LA PÁGINA
+    // ELEMENTOS
     // =====================================
 
     const a = document.getElementById('audio');
     const p = document.getElementById('play');
-    const r = document.getElementById('progress');
-    const t = document.getElementById('time');
 
-    const seccionCodigo = document.getElementById('seccionCodigo');
     const letraCodigo = document.getElementById('letraCodigo');
+    const interroganteCodigo = document.getElementById('interroganteCodigo');
+
+    const progresoCircular = document.getElementById('progresoCircular');
+    const surcoCircular = document.getElementById('surcoCircular');
+
+    const controlCircular = document.getElementById('controlCircular');
 
     const botonVolver = document.getElementById('volver');
 
 
     // =====================================
-    // CONFIGURAR LETRA
+    // APLICAR CONFIGURACIÓN VISUAL
     // =====================================
 
     letraCodigo.textContent = LETRA_CODIGO;
 
+    letraCodigo.style.color = COLOR_PROGRESO;
+    letraCodigo.style.fontSize = TAMANO_LETRA + "px";
+
+    interroganteCodigo.style.color = COLOR_INTERROGANTE;
+    interroganteCodigo.style.fontSize = TAMANO_INTERROGANTE + "px";
+
+    progresoCircular.style.stroke = COLOR_PROGRESO;
+    progresoCircular.style.strokeWidth = GROSOR_LINEA;
+
+    surcoCircular.style.stroke = COLOR_SURCO;
+    surcoCircular.style.strokeWidth = GROSOR_SURCO;
+
+    controlCircular.querySelector('.zona-interactiva')
+      .style.strokeWidth = GROSOR_ZONA_TACTIL;
+
 
     // =====================================
-    // ACTUALIZAR BARRA DE PROGRESO
+    // CONFIGURAR CIRCUNFERENCIA
     // =====================================
 
-    function updateProgress() {
+    const CIRCUNFERENCIA = 2 * Math.PI * 90;
 
-      const value = r.value;
+    progresoCircular.style.strokeDasharray = CIRCUNFERENCIA;
+    progresoCircular.style.strokeDashoffset = 0;
 
-      r.style.background = `linear-gradient(
-        to right,
-        #2f80ed 0%,
-        #2f80ed ${value}%,
-        #e0e0e0 ${value}%,
-        #e0e0e0 100%
-      )`;
+
+    // =====================================
+    // ACTUALIZAR PROGRESO CIRCULAR
+    // =====================================
+
+    function actualizarProgreso() {
+
+      const duracion = a.duration || 0;
+
+      if (!duracion || !isFinite(duracion)) {
+        progresoCircular.style.strokeDashoffset = 0;
+        return;
+      }
+
+      const porcentaje = Math.min(
+        Math.max(a.currentTime / duracion, 0),
+        1
+      );
+
+      // La línea naranja se acorta mientras
+      // avanza el audio.
+
+      const restante = CIRCUNFERENCIA * porcentaje;
+
+      progresoCircular.style.strokeDashoffset = restante;
 
     }
 
 
     // =====================================
-    // FORMATO DEL TIEMPO
+    // ACTUALIZAR LETRA E INTERROGANTE
     // =====================================
 
-    function f(s) {
+    function actualizarCodigo() {
 
-      if (!isFinite(s)) return "00:00";
+      const partes = TIEMPO_CODIGO.split(":");
 
-      let m = Math.floor(s / 60);
-      let x = Math.floor(s % 60);
+      const segundoCodigo =
+        Number(partes[0]) * 60 +
+        Number(partes[1]);
 
-      return String(m).padStart(2, '0') + ':' +
-             String(x).padStart(2, '0');
+      if (a.currentTime >= segundoCodigo) {
+
+        letraCodigo.classList.add('visible');
+        interroganteCodigo.classList.add('oculto');
+
+      } else {
+
+        letraCodigo.classList.remove('visible');
+        interroganteCodigo.classList.remove('oculto');
+
+      }
 
     }
 
 
     // =====================================
-    // MOSTRAR CODIGO EN EL MOMENTO INDICADO
+    // ACTUALIZAR TODA LA INTERFAZ
     // =====================================
 
-function actualizarCodigo() {
+    function actualizarInterfaz() {
 
-  const partes = TIEMPO_CODIGO.split(":");
-  const segundoCodigo = Number(partes[0]) * 60 + Number(partes[1]);
+      actualizarProgreso();
+      actualizarCodigo();
 
-  if (a.currentTime >= segundoCodigo) {
+    }
 
-    letraCodigo.classList.add('visible');
 
-  } else {
+    // =====================================
+    // TOCAR EL CÍRCULO PARA MOVER EL AUDIO
+    // =====================================
 
-    letraCodigo.classList.remove('visible');
+    function buscarAudioDesdeToque(event) {
 
-  }
+      if (!isFinite(a.duration) || a.duration <= 0) {
+        return;
+      }
 
-}
+      const rect = controlCircular.getBoundingClientRect();
+
+      // Coordenadas del toque respecto al centro
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+
+      // Calcular el ángulo
+      let angulo = Math.atan2(y, x);
+
+      // Convertir a grados
+      let grados = angulo * 180 / Math.PI;
+
+      // El inicio del audio está arriba
+      grados = (grados + 90 + 360) % 360;
+
+      // Convertir ángulo a porcentaje
+      const porcentaje = grados / 360;
+
+      // Cambiar posición del audio
+      a.currentTime = porcentaje * a.duration;
+
+      // Actualizar visualmente
+      actualizarInterfaz();
+
+    }
+
+
+    // =====================================
+    // INTERACCIÓN CON LÍNEA Y SURCO
+    // =====================================
+
+    let arrastrando = false;
+
+    controlCircular.addEventListener('pointerdown', (event) => {
+
+      arrastrando = true;
+
+      controlCircular.setPointerCapture(event.pointerId);
+
+      buscarAudioDesdeToque(event);
+
+    });
+
+    controlCircular.addEventListener('pointermove', (event) => {
+
+      if (arrastrando) {
+
+        buscarAudioDesdeToque(event);
+
+      }
+
+    });
+
+    controlCircular.addEventListener('pointerup', () => {
+
+      arrastrando = false;
+
+    });
+
+    controlCircular.addEventListener('pointercancel', () => {
+
+      arrastrando = false;
+
+    });
+
 
     // =====================================
     // BOTÓN ESCUCHAR / PAUSA
@@ -363,34 +558,20 @@ function actualizarCodigo() {
 
     a.ontimeupdate = () => {
 
-      r.value = (a.currentTime / (a.duration || 1)) * 100;
-
-      updateProgress();
-
-      t.textContent = f(a.currentTime) + ' / ' + f(a.duration);
-
-      actualizarCodigo();
+      actualizarInterfaz();
 
     };
 
 
-    // =====================================
-    // ADELANTAR O RETROCEDER AUDIO
-    // =====================================
+    a.onloadedmetadata = () => {
 
-    r.oninput = () => {
-
-      a.currentTime = (r.value / 100) * (a.duration || 0);
-
-      updateProgress();
-
-      actualizarCodigo();
+      actualizarInterfaz();
 
     };
 
 
-    // Actualizar al terminar una búsqueda en el audio
-    a.onseeked = actualizarCodigo;
+    a.onseeking = actualizarInterfaz;
+    a.onseeked = actualizarInterfaz;
 
 
     // =====================================
@@ -401,21 +582,23 @@ function actualizarCodigo() {
 
       p.textContent = '▶ Escuchar';
 
+      actualizarInterfaz();
+
     };
 
 
-// =====================================
-// BOTÓN VOLVER A SCANNER MIND
-// =====================================
+    // =====================================
+    // BOTÓN VOLVER A SCANNER MIND
+    // =====================================
 
-botonVolver.onclick = () => {
+    botonVolver.onclick = () => {
 
-  window.parent.postMessage(
-    { type: "READMIND_CLOSE_CONTENT" },
-    "*"
-  );
+      window.parent.postMessage(
+        { type: "READMIND_CLOSE_CONTENT" },
+        "*"
+      );
 
-};
+    };
 
   </script>
 
