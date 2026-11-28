@@ -180,6 +180,162 @@ personajesES.forEach((nombre, i) => {
     objetivo.audio = "./assets/mito_book/CM_audio2.mp3";
     objetivo.page = "./assets/mito_book/CM2.html";
   }
+  if (i === 2) {
+    objetivo.cover = "./assets/mito_book/CM_portada3.png";
+    objetivo.audio = "./assets/mito_book/CM_audio3.mp3";
+    objetivo.page = "./assets/mito_book/CM3.html";
+  }
+
+  if (i === 3) {
+    objetivo.cover = "./assets/mito_book/CM_portada4.png";
+    objetivo.audio = "./assets/mito_book/CM_audio4.mp3";
+    objetivo.page = "./assets/mito_book/CM4.html";
+  }
+  if (i === 4) {
+    objetivo.cover = "./assets/mito_book/CM_portada5.png";
+    objetivo.audio = "./assets/mito_book/CM_audio5.mp3";
+    objetivo.page = "./assets/mito_book/CM5.html";
+  }
+
+  if (i === 5) {
+    objetivo.cover = "./assets/mito_book/CM_portada6.png";
+    objetivo.audio = "./assets/mito_book/CM_audio6.mp3";
+    objetivo.page = "./assets/mito_book/CM6.html";
+  }
+  if (i === 6) {
+    objetivo.cover = "./assets/mito_book/CM_portada7.png";
+    objetivo.audio = "./assets/mito_book/CM_audio7.mp3";
+    objetivo.page = "./assets/mito_book/CM7.html";
+  }
+
+  if (i === 7) {
+    objetivo.cover = "./assets/mito_book/CM_portada8.png";
+    objetivo.audio = "./assets/mito_book/CM_audio8.mp3";
+    objetivo.page = "./assets/mito_book/CM8.html";
+  }
+  if (i === 8) {
+    objetivo.cover = "./assets/mito_book/CM_portada9.png";
+    objetivo.audio = "./assets/mito_book/CM_audio9.mp3";
+    objetivo.page = "./assets/mito_book/CM9.html";
+  }
+
+  if (i === 9) {
+    objetivo.cover = "./assets/mito_book/CM_portada10.png";
+    objetivo.audio = "./assets/mito_book/CM_audio10.mp3";
+    objetivo.page = "./assets/mito_book/CM10.html";
+  }
+  if (i === 10) {
+    objetivo.cover = "./assets/mito_book/CM_portada11.png";
+    objetivo.audio = "./assets/mito_book/CM_audio11.mp3";
+    objetivo.page = "./assets/mito_book/CM11.html";
+  }
+
+  if (i === 11) {
+    objetivo.cover = "./assets/mito_book/CM_portada12.png";
+    objetivo.audio = "./assets/mito_book/CM_audio12.mp3";
+    objetivo.page = "./assets/mito_book/CM12.html";
+  }
+  if (i === 12) {
+    objetivo.cover = "./assets/mito_book/CM_portada13.png";
+    objetivo.audio = "./assets/mito_book/CM_audio13.mp3";
+    objetivo.page = "./assets/mito_book/CM13.html";
+  }
+
+  if (i === 13) {
+    objetivo.cover = "./assets/mito_book/CM_portada14.png";
+    objetivo.audio = "./assets/mito_book/CM_audio14.mp3";
+    objetivo.page = "./assets/mito_book/CM14.html";
+  }
+  if (i === 14) {
+    objetivo.cover = "./assets/mito_book/CM_portada15.png";
+    objetivo.audio = "./assets/mito_book/CM_audio15.mp3";
+    objetivo.page = "./assets/mito_book/CM15.html";
+  }
+
+  if (i === 15) {
+    objetivo.cover = "./assets/mito_book/CM_portada16.png";
+    objetivo.audio = "./assets/mito_book/CM_audio16.mp3";
+    objetivo.page = "./assets/mito_book/CM16.html";
+  }
+  if (i === 16) {
+    objetivo.cover = "./assets/mito_book/CM_portada17.png";
+    objetivo.audio = "./assets/mito_book/CM_audio17.mp3";
+    objetivo.page = "./assets/mito_book/CM17.html";
+  }
+
+  if (i === 17) {
+    objetivo.cover = "./assets/mito_book/CM_portada18.png";
+    objetivo.audio = "./assets/mito_book/CM_audio18.mp3";
+    objetivo.page = "./assets/mito_book/CM18.html";
+  }
+  if (i === 18) {
+    objetivo.cover = "./assets/mito_book/CM_portada19.png";
+    objetivo.audio = "./assets/mito_book/CM_audio19.mp3";
+    objetivo.page = "./assets/mito_book/CM19.html";
+  }
+
+  if (i === 19) {
+    objetivo.cover = "./assets/mito_book/CM_portada20.png";
+    objetivo.audio = "./assets/mito_book/CM_audio20.mp3";
+    objetivo.page = "./assets/mito_book/CM20.html";
+  }
+  if (i === 20) {
+    objetivo.cover = "./assets/mito_book/CM_portada21.png";
+    objetivo.audio = "./assets/mito_book/CM_audio21.mp3";
+    objetivo.page = "./assets/mito_book/CM21.html";
+  }
+
+  if (i === 21) {
+    objetivo.cover = "./assets/mito_book/CM_portada21.png";
+    objetivo.audio = "./assets/mito_book/CM_audio21.mp3";
+    objetivo.page = "./assets/mito_book/CM21.html";
+  }
+  if (i === 22) {
+    objetivo.cover = "./assets/mito_book/CM_portada22.png";
+    objetivo.audio = "./assets/mito_book/CM_audio22.mp3";
+    objetivo.page = "./assets/mito_book/CM22.html";
+  }
+
+  if (i === 23) {
+    objetivo.cover = "./assets/mito_book/CM_portada23.png";
+    objetivo.audio = "./assets/mito_book/CM_audio23.mp3";
+    objetivo.page = "./assets/mito_book/CM23.html";
+  }
+  if (i === 24) {
+    objetivo.cover = "./assets/mito_book/CM_portada24.png";
+    objetivo.audio = "./assets/mito_book/CM_audio24.mp3";
+    objetivo.page = "./assets/mito_book/CM24.html";
+  }
+  if (i === 25) {
+    objetivo.cover = "./assets/mito_book/CM_portada25.png";
+    objetivo.audio = "./assets/mito_book/CM_audio25.mp3";
+    objetivo.page = "./assets/mito_book/CM25.html";
+  }
+  if (i === 26) {
+    objetivo.cover = "./assets/mito_book/CM_portada26.png";
+    objetivo.audio = "./assets/mito_book/CM_audio26.mp3";
+    objetivo.page = "./assets/mito_book/CM26.html";
+  }
+  if (i === 27) {
+    objetivo.cover = "./assets/mito_book/CM_portada27.png";
+    objetivo.audio = "./assets/mito_book/CM_audio27.mp3";
+    objetivo.page = "./assets/mito_book/CM27.html";
+  }
+  if (i === 28) {
+    objetivo.cover = "./assets/mito_book/CM_portada288.png";
+    objetivo.audio = "./assets/mito_book/CM_audio28.mp3";
+    objetivo.page = "./assets/mito_book/CM28.html";
+  }
+  if (i === 29) {
+    objetivo.cover = "./assets/mito_book/CM_portada29.png";
+    objetivo.audio = "./assets/mito_book/CM_audio29.mp3";
+    objetivo.page = "./assets/mito_book/CM29.html";
+  }
+  if (i === 30) {
+    objetivo.cover = "./assets/mito_book/CM_portada30.png";
+    objetivo.audio = "./assets/mito_book/CM_audio30.mp3";
+    objetivo.page = "./assets/mito_book/CM30.html";
+  }
 
   objetivos.push(objetivo);
 });
